@@ -26,11 +26,11 @@ function NavbarLanding() {
             <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>
                 <Nav className="me-auto"></Nav>
                 <Nav className="justify-content-center">
-                    <Nav.Link href="#login" className="me-5" style={font}>MASUK</Nav.Link>
-                    <Nav.Link href="#registration" className="me-3" style={font}>DAFTAR</Nav.Link>
+                    <Nav.Link href="/login" className="me-5" style={font}>MASUK</Nav.Link>
+                    <Nav.Link href="/registration" className="me-3" style={font}>DAFTAR</Nav.Link>
                 </Nav>
                 <Nav className='justify-content-center'>
-                    <Nav.Link href="#registration"><Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>SEBAGAI TEMPAT</Button></Nav.Link>
+                    <Nav.Link href="/login-tempat"><Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>SEBAGAI TEMPAT</Button></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

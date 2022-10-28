@@ -10,8 +10,13 @@ function NavbarLanding() {
         paddingRight: '10%',
         color: 'white',
     }
-    const font ={
+    const font = {
         fontSize: 12,
+    }
+    const link = {
+        textDecoration: 'none',
+        color: 'white',
+        display: 'block',
     }
     const brand = {
         fontSize: 32,
@@ -22,7 +27,7 @@ function NavbarLanding() {
     }
 
     return (
-        <Container fluid style={background} className='fixed-bottom pt-5'>
+        <Container fluid style={background} className='pt-5'>
             <Row>
                 <Col>
                     <Row>
@@ -45,16 +50,16 @@ function NavbarLanding() {
                         <Col></Col>
                         <Col style={font}>
                             <h6 className='mb-3'>Pengguna</h6>
-                            <p className='mb-2'>Masuk Musisi</p>
-                            <p className='mb-2'>Masuk Tempat</p>
-                            <p className='mb-2'>Daftar Musisi</p>
-                            <p className='mb-2'>Daftar Tempat</p>
+                            <a href='/login' className='mb-2' style={link}>Masuk Musisi</a>
+                            <a href='/login-tempat' className='mb-2' style={link}>Masuk Tempat</a>
+                            <a href='/registration' className='mb-2' style={link}>Daftar Musisi</a>
+                            <a href='/registration-tempat' className='mb-2' style={link}>Daftar Tempat</a>
                         </Col>
                         <Col style={font}>
                             <h6 className='mb-3'>Eksplorasi</h6>
-                            <p className='mb-2'>Halaman Utama</p>
-                            <p className='mb-2'>Tentang Kami</p>
-                            <p className='mb-2'>Kontak</p>
+                            <a href='/' className='mb-2' style={link}>Halaman Utama</a>
+                            <a href='/about' className='mb-2' style={link}>Tentang Kami</a>
+                            <p className='mt-2'>Kontak</p>
                         </Col>
                     </Row>
                 </Col>
