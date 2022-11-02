@@ -16,7 +16,7 @@ const CardsRiwayatMusisi = () => {
                 <p className=' mt-4'>Sabtu, 23 Februari 2022</p>
             </div>
             <div className='col text-center'>
-                <button className='btn btn-danger mt-3'>Dalam Ulasan</button>
+                <button className='badge mt-4' style={{border: '1px solid #BF6919', background: '#FFF9F2', color: '#BF6919'}}>Dalam Ulasan</button>
             </div>
             <div className='col text-center'>
                 <button className='btn btn-primary mt-3'>DETAIL <FaArrowRight/></button>
