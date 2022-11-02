@@ -9,6 +9,7 @@ import LoginTempat from "./pages/login/LoginTempat";
 import HomeMusisi from "./pages/home/HomeMusisi"
 import RegistrationMusisi from "./pages/registration/RegistrationMusisi";
 import RegistrationTempat from "./pages/registration/RegistrationTempat";
+import Riwayat from "./pages/riwayat/Riwayat";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
       <Route path="/home-musisi" element={<HomeMusisi/>} />
+      <Route path="/riwayat" element={<Riwayat/>} />
     </Routes>
   );
 }
