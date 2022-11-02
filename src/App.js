@@ -6,6 +6,7 @@ import LandingPage from "./pages/landing/LandingPage";
 import AboutUs from "./pages/about/AboutUs";
 import LoginMusisi from "./pages/login/LoginMusisi";
 import LoginTempat from "./pages/login/LoginTempat";
+import HomeMusisi from "./pages/home/HomeMusisi"
 import RegistrationMusisi from "./pages/registration/RegistrationMusisi";
 import RegistrationTempat from "./pages/registration/RegistrationTempat";
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/registration" element={<RegistrationMusisi />} />
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
+      <Route path="/home-musisi" element={<HomeMusisi/>} />
     </Routes>
   );
 }
