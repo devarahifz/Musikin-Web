@@ -8,6 +8,8 @@ import LoginMusisi from "./pages/login/LoginMusisi";
 import LoginTempat from "./pages/login/LoginTempat";
 import RegistrationMusisi from "./pages/registration/RegistrationMusisi";
 import RegistrationTempat from "./pages/registration/RegistrationTempat";
+import HomeTempat from "./pages/home/HomeTempat";
+import Pelamar from "./pages/tempat/Pelamar";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Route path="/registration" element={<RegistrationMusisi />} />
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
+      <Route path="/lowongan" element={<HomeTempat />} />
+      <Route path="/daftar-pelamar" element={<Pelamar />} />
     </Routes>
   );
 }
