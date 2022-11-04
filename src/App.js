@@ -14,6 +14,8 @@ import ProfileMusisi from "./pages/profile/ProfileMusisi";
 import EditProfileMusisi from "./pages/profile/EditProfileMusisi";
 import DetailLowongan from "./pages/detail/DetailLowongan";
 import Lamar from "./pages/detail/Lamar";
+import HomeTempat from "./pages/home/HomeTempat";
+import Pelamar from "./pages/tempat/Pelamar";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
       <Route path="/detail/lamar" element={<Lamar/>}/>
       <Route path="/profile" element={<ProfileMusisi/>}/>
       <Route path="/profile/edit" element={<EditProfileMusisi/>}/>
+      <Route path="/lowongan" element={<HomeTempat />} />
+      <Route path="/daftar-pelamar" element={<Pelamar />} />
     </Routes>
   );
 }

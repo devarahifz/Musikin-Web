@@ -31,12 +31,12 @@ const NavbarTempat = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
-                    <Nav.Link href="#riwayat" className="me-3" style={font}>LOWONGAN</Nav.Link>
+                    <Nav.Link href="/lowongan" className="me-3" style={font}>LOWONGAN</Nav.Link>
                     <Nav.Link href="#profil" className="me-3" style={font}>PROFIL</Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>
-                    <Nav.Link href="#registration"><Button className='py-2 px-4' style={button}>KELUAR</Button></Nav.Link>
+                    <Nav.Link href="#logout"><Button className='py-2 px-4' style={button}>KELUAR</Button></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
