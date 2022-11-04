@@ -10,6 +10,10 @@ import HomeMusisi from "./pages/home/HomeMusisi"
 import RegistrationMusisi from "./pages/registration/RegistrationMusisi";
 import RegistrationTempat from "./pages/registration/RegistrationTempat";
 import Riwayat from "./pages/riwayat/Riwayat";
+import ProfileMusisi from "./pages/profile/ProfileMusisi";
+import EditProfileMusisi from "./pages/profile/EditProfileMusisi";
+import DetailLowongan from "./pages/detail/DetailLowongan";
+import Lamar from "./pages/detail/Lamar";
 
 function App() {
   return (
@@ -22,6 +26,10 @@ function App() {
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
       <Route path="/home-musisi" element={<HomeMusisi/>} />
       <Route path="/riwayat" element={<Riwayat/>} />
+      <Route path="/detail" element={<DetailLowongan/>}/>
+      <Route path="/detail/lamar" element={<Lamar/>}/>
+      <Route path="/profile" element={<ProfileMusisi/>}/>
+      <Route path="/profile/edit" element={<EditProfileMusisi/>}/>
     </Routes>
   );
 }
