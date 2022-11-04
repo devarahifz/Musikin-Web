@@ -29,7 +29,7 @@ const EditProfileMusisi = () => {
             <p className='m-0'>Tentang</p>
             <textarea className='w-100  p-2 mb-3' rows="4" style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px'}} value="Lorem Ipsum"/>
             <button className='btn btn-primary w-100 mb-1'>SIMPAN</button>
-            <button className='btn btn-light w-100' style={{backgroundColor: '#ECECEC', color: '#4361EE'}}>Kembali</button>
+            <a href="/profile"><button className='btn btn-light w-100' style={{backgroundColor: '#ECECEC', color: '#4361EE'}}>Kembali</button></a>
         </div>
         <Footer/>
     </div>

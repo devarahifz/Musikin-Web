@@ -18,9 +18,9 @@ const CardsRiwayatMusisi = () => {
             <div className='col text-center'>
                 <button className='badge mt-4' style={{border: '1px solid #BF6919', background: '#FFF9F2', color: '#BF6919'}}>Dalam Ulasan</button>
             </div>
-            <div className='col text-center'>
+            <a href='/detail' className='col text-center'>
                 <button className='btn btn-primary mt-3'>DETAIL <FaArrowRight/></button>
-            </div>
+            </a>
         </div>
     </div>
     </div>

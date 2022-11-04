@@ -43,12 +43,13 @@ const HomeTempat = () => {
 
           {/* card 1 */}
           {List.map((item, index) => (
-          <a href='/daftar-pelamar' style={{color: 'black'}}>
-          <Card style={card} key={index}>
+            <Card style={card} key={index}>
             <Card.Body>
               <Row>
                 <Col>
+                <a href='/daftar-pelamar' style={{color: 'black', textDecoration: 'none'}}>
                   <Card.Title style={{fontWeight: 'bold'}}>{item.name}</Card.Title>
+                </a>
                 </Col>
                 <Col className='text-end'>
                   <DropdownButton 
@@ -70,7 +71,6 @@ const HomeTempat = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-          </a>
           ))}
 
           <Button style={button}>

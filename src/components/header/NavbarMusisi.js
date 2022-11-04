@@ -31,13 +31,13 @@ const NavbarMusisi = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
-                    <Nav.Link href="#search" className="me-3" style={font}>CARI</Nav.Link>
-                    <Nav.Link href="#riwayat" className="me-3" style={font}>RIWAYAT</Nav.Link>
-                    <Nav.Link href="#profil" className="me-3" style={font}>PROFIL</Nav.Link>
+                    <Nav.Link href="/home-musisi" className="me-3" style={font}>CARI</Nav.Link>
+                    <Nav.Link href="/riwayat" className="me-3" style={font}>RIWAYAT</Nav.Link>
+                    <Nav.Link href="/profile" className="me-3" style={font}>PROFIL</Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>
-                    <Nav.Link href="#registration"><Button className='py-2 px-4' style={button}>KELUAR</Button></Nav.Link>
+                    <Nav.Link href="#logout"><Button className='py-2 px-4' style={button}>KELUAR</Button></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

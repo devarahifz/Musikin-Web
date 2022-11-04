@@ -17,9 +17,9 @@ const DetailLowongan = () => {
                     <p className="card-subtitle"><FaMapMarkerAlt/>Mall Kelapa Gading,Jakarta Timur</p>
                     <p className="card-subtitle mb-2"><FaDollarSign/>Rp 500.000,00</p>
                 </div>
-                <div className='col text-end'>
+                <a href='/detail/lamar' className='col text-end'>
                     <button className='btn btn-primary text-center mb-4' style={{fontSize:'16px',width:'157px'}}>LAMAR</button>
-                </div>
+                </a>
             </div>
             <hr></hr>
             <Swiper

@@ -15,7 +15,7 @@ const Lamar = () => {
             <p className='m-0'>Tautan Portofolio</p>
             <input className='w-100  p-2 mb-5 form-control' type="link" style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px', height:'48px'}} />
             <button className='btn btn-primary w-100 mb-3' style={{height:'48px'}}>LAMAR</button>
-            <button className='btn btn-light w-100' style={{height:'48px', backgroundColor: '#ECECEC', color: '#4361EE'}}>BATAL</button>
+            <a href="/detail"><button className='btn btn-light w-100' style={{height:'48px', backgroundColor: '#ECECEC', color: '#4361EE'}}>BATAL</button></a>
         </div>
         <Footer/>
     </div>
