@@ -58,7 +58,7 @@ const HomeTempat = () => {
                     drop='end' 
                     title={<BsThreeDotsVertical style={{color: 'grey'}} />}
                     >
-                    <Dropdown.Item href="#/action-1">Ubah</Dropdown.Item>
+                    <Dropdown.Item href="/lowongan/edit-lowongan">Ubah</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Hapus</Dropdown.Item>
                   </DropdownButton>
                 </Col>
@@ -73,7 +73,7 @@ const HomeTempat = () => {
           </Card>
           ))}
 
-          <Button style={button}>
+          <Button style={button} href='/lowongan/buat-lowongan'>
             <BsPlusLg className='opacity-75' style={{display: 'block', margin: '0 auto', fontSize: '3.5rem', marginBottom: '1.5rem'}} />
             <p className='m-0 opacity-75'>Tambah Lowongan</p>
           </Button>

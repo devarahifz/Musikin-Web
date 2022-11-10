@@ -16,6 +16,9 @@ import DetailLowongan from "./pages/detail/DetailLowongan";
 import Lamar from "./pages/detail/Lamar";
 import HomeTempat from "./pages/home/HomeTempat";
 import Pelamar from "./pages/tempat/Pelamar";
+import FormLowongan from "./pages/tempat/FormLowongan";
+import EditLowongan from "./pages/tempat/EditLowongan";
+import ProfileTempat from "./pages/profile/ProfileTempat";
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
       <Route path="/profile/edit" element={<EditProfileMusisi/>}/>
       <Route path="/lowongan" element={<HomeTempat />} />
       <Route path="/daftar-pelamar" element={<Pelamar />} />
+      <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
+      <Route path="/lowongan/edit-lowongan" element={<EditLowongan />} />
+      <Route path="/profile-owner" element={<ProfileTempat />} />
     </Routes>
   );
 }

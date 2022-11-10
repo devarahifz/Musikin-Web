@@ -32,7 +32,7 @@ const NavbarTempat = () => {
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
                     <Nav.Link href="/lowongan" className="me-3" style={font}>LOWONGAN</Nav.Link>
-                    <Nav.Link href="#profil" className="me-3" style={font}>PROFIL</Nav.Link>
+                    <Nav.Link href="/profile-owner" className="me-3" style={font}>PROFIL</Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>

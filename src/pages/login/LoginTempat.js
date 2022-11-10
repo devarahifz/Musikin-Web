@@ -1,10 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
+import { login, reset } from "../../features/owner/AuthSlice";
 
 const LoginTempat = () => {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
+
+    const { email, password } = formData;
+
+    const dispatch = useDispatch();
+    
+    const { owner, status, error } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (owner) {
+            window.location.href = "/lowongan";
+        }
+
+        if (error) {
+            alert(error.message);
+        }
+        
+        dispatch(reset());
+    }, [owner, error, dispatch]);
+
+    const onChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(login(formData));
+    };
+
     const card = {
         border: "2px solid #ECECEC",
         borderRadius: "12px",
@@ -25,15 +60,15 @@ const LoginTempat = () => {
             <div style={card}>
                 <img src={logo} alt="logo" />
                 <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Masuk dengan akun <b>tempat</b></p>
-                <Form>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" style={input} />
+                        <Form.Control type="email" value={email} onChange={onChange} style={input} />
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" style={input} />
+                        <Form.Control type="password" value={password} onChange={onChange} style={input} />
                     </Form.Group>
                     <a href="#" style={link}>Lupa password?</a>
                     <br/>
