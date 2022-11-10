@@ -1,51 +1,51 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AuthService from "./AuthService";
 
-// Get owner from local storage
-const owner = JSON.parse(localStorage.getItem("owner"));
+// Get user from local storage
+const user = JSON.parse(localStorage.getItem("user"));
 
 // Initial state
 const initialState = {
-    owner: owner,
+    user: user,
     status: "idle",
     error: null
 };
 
-// Register owner
+// Register user
 export const register = createAsyncThunk(
     "auth/register",
-    async (owner, { rejectWithValue }) => {
+    async (user, { rejectWithValue }) => {
         try {
-            const response = await AuthService.register(owner);
+            const response = await AuthService.register(user);
             return response;
         } catch (error) {
-            return rejectWithValue(error.response.owner);
+            return rejectWithValue(error.response.user);
         }
     }
 );
 
-// Login owner
+// Login user
 export const login = createAsyncThunk(
     "auth/login",
-    async (owner, { rejectWithValue }) => {
+    async (user, { rejectWithValue }) => {
         try {
-            const response = await AuthService.login(owner);
+            const response = await AuthService.login(user);
             return response;
         } catch (error) {
-            return rejectWithValue(error.response.owner);
+            return rejectWithValue(error.response.user);
         }
     }
 );
 
-// Logout owner
+// Logout user
 export const logout = createAsyncThunk(
     "auth/logout",
-    async (owner, { rejectWithValue }) => {
+    async (user, { rejectWithValue }) => {
         try {
-            const response = await AuthService.logout(owner);
+            const response = await AuthService.logout(user);
             return response;
         } catch (error) {
-            return rejectWithValue(error.response.owner);
+            return rejectWithValue(error.response.user);
         }
     }
 );
@@ -83,7 +83,7 @@ export const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.owner = action.payload;
+                state.user = action.payload;
             })
             .addCase(login.rejected, (state, action) => {
                 state.status = "failed";

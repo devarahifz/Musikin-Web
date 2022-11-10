@@ -1,7 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Nav, Navbar, Button } from 'react-bootstrap/';
 import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
+import { logout, reset } from "../../features/owner/AuthSlice";
 
 const NavbarTempat = () => {
+    const dispatch = useDispatch();
+    const { owner } = useSelector((state) => state.authOwner);
+
+    const onLogout = () => {
+        dispatch(logout());
+        dispatch(reset());
+        window.location.href = "/login-tempat";
+    };
+
     const background = {
         backgroundColor: '#FFFFFF',
         boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)',
@@ -36,7 +47,7 @@ const NavbarTempat = () => {
                 </Nav>
                 </Container>
                 <Nav className='text-center'>
-                    <Nav.Link href="#logout"><Button className='py-2 px-4' style={button}>KELUAR</Button></Nav.Link>
+                    <Nav.Link href="#logout"><Button className='py-2 px-4' onClick={onLogout} style={button}>KELUAR</Button></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

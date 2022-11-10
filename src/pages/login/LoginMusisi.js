@@ -1,10 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
+import { login, reset } from "../../features/user/AuthSlice";
 
 const LoginMusisi = () => {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+
+    const { email, password } = formData;
+
+    const dispatch = useDispatch();
+
+    const { user, status, error } = useSelector((state) => state.authUser);
+
+    useEffect(() => {
+        if (user) {
+            window.location.href = "/home-musisi";
+        }
+
+        if (error) {
+            alert(error.message);
+        }
+
+        dispatch(reset());
+    }, [user, error, dispatch]);
+
+    const onChange = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            email: email,
+            password: password
+        }
+        dispatch(login(data));
+    };
+
     const card = {
         border: "2px solid #ECECEC",
         borderRadius: "12px",
@@ -25,15 +66,25 @@ const LoginMusisi = () => {
             <div style={card}>
                 <img src={logo} alt="logo" />
                 <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Masuk dengan akun <b>musisi</b></p>
-                <Form>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" style={input} />
+                        <Form.Control 
+                        type="email"
+                        name="email" 
+                        value={email} 
+                        onChange={onChange} 
+                        style={input} />
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" style={input} />
+                        <Form.Control 
+                        type="password" 
+                        name="password"
+                        value={password} 
+                        onChange={onChange} 
+                        style={input} />
                     </Form.Group>
                     <a href="#" style={link}>Lupa password?</a>
                     <br/>

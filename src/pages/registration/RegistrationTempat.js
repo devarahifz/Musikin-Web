@@ -18,7 +18,7 @@ const RegistrationTempat = () => {
 
     const dispatch = useDispatch();
 
-    const { owner, status, error } = useSelector((state) => state.auth);
+    const { owner, status, error } = useSelector((state) => state.authOwner);
 
     useEffect(() => {
         if (owner) {
@@ -41,14 +41,8 @@ const RegistrationTempat = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const data = {
-            email: email,
-            name: name,
-            password: password,
-            phone: phone,
-        };
 
-        dispatch(register(data));
+        dispatch(register(formData));
     };
 
     const card = {
@@ -73,6 +67,7 @@ const RegistrationTempat = () => {
                         <Form.Label>Nama</Form.Label>
                         <Form.Control 
                         type="text" 
+                        name="name"
                         value={name} 
                         onChange={onChange} 
                         style={input} />
@@ -81,20 +76,25 @@ const RegistrationTempat = () => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                         type="email" 
+                        name="email"
                         value={email} 
                         onChange={onChange} 
                         style={input} />
                     </Form.Group>
                     <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" 
+                        <Form.Control 
+                        type="password"
+                        name="password" 
                         value={password} 
                         onChange={onChange} 
                         style={input} />
                     </Form.Group>
                     <Form.Group className="mb-3 text-start">
                         <Form.Label>Nomor Handphone</Form.Label>
-                        <Form.Control type="number" 
+                        <Form.Control 
+                        type="number"
+                        name="phone" 
                         value={phone} 
                         onChange={onChange} 
                         style={input} />

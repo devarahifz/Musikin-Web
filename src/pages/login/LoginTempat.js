@@ -16,7 +16,7 @@ const LoginTempat = () => {
 
     const dispatch = useDispatch();
     
-    const { owner, status, error } = useSelector((state) => state.auth);
+    const { owner, status, error } = useSelector((state) => state.authOwner);
 
     useEffect(() => {
         if (owner) {
@@ -31,13 +31,20 @@ const LoginTempat = () => {
     }, [owner, error, dispatch]);
 
     const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const data = {
+            email,
+            password,
+        };
 
-        dispatch(login(formData));
+        dispatch(login(data));
     };
 
     const card = {
@@ -63,12 +70,22 @@ const LoginTempat = () => {
                 <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" value={email} onChange={onChange} style={input} />
+                        <Form.Control 
+                        type="email"
+                        name="email" 
+                        value={email} 
+                        onChange={onChange} 
+                        style={input} />
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" value={password} onChange={onChange} style={input} />
+                        <Form.Control 
+                        type="password" 
+                        name="password"
+                        value={password} 
+                        onChange={onChange} 
+                        style={input} />
                     </Form.Group>
                     <a href="#" style={link}>Lupa password?</a>
                     <br/>
