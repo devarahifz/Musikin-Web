@@ -21,7 +21,7 @@ const Dashboard = () => {
                             <h3 className='fw-bold'> Dashboard Admin Musikin </h3>
                         </div>
                     </div>
-                    <div className='row d-grid mt-5 pt-5'>
+                    <div className='row d-grid my-5 pt-5'>
                         <div className='col '>
                             <button
                             className={`${toggleState === 1 ? "tabs active-tabs text-primary" : "tabs text-dark"} btn btn mb-3`}
@@ -38,7 +38,7 @@ const Dashboard = () => {
                             onClick={() => toggleTab(3)}>Lowongan</button>
                         </div>
                     </div>
-                    
+                    <div className='btn btn-danger mt-5 ms-2'>Keluar</div>
                 </div>
             </div>
             <div className='col pt-4'>
