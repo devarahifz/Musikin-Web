@@ -4,9 +4,31 @@ import { Container, Card, Dropdown, Row, Col, DropdownButton, Button } from 'rea
 import { BiDollar } from 'react-icons/bi'
 import { BsThreeDotsVertical, BsPlusLg } from 'react-icons/bs'
 import { HiLocationMarker } from 'react-icons/hi'
-import List from '../tempat/ListLowongan'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllGigs, deleteGig } from '../../features/gig/GigSlice'
 
 const HomeTempat = () => {
+  const { gig } = useSelector((state) => state.gig)
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    (async () => {
+    await dispatch(getAllGigs())
+
+    document.querySelectorAll('.dropdown-toggle').forEach((card) => {
+      card.style.background = 'none'
+      card.style.padding = '0'
+      card.style.border = 'none'
+    })
+  })()
+
+  dispatch(getAllGigs())
+  }, [dispatch])
+
+  const handleDelete = (id) => {
+    dispatch(deleteGig(id))
+  }
+  
   const card = {
     border: '2px solid rgba(236, 236, 236, 1)',
     borderRadius: '12px',
@@ -27,14 +49,6 @@ const HomeTempat = () => {
     fontWeight: '700',
   }
 
-  useEffect(() => {
-    document.querySelectorAll('.dropdown-toggle').forEach((card) => {
-      card.style.background = 'none'
-      card.style.padding = '0'
-      card.style.border = 'none'
-    })
-  }, [])
-  
   return (
     <>
       <Layout>
@@ -42,13 +56,13 @@ const HomeTempat = () => {
           <h1 style={{fontSize: '3rem', fontWeight: 'bold', margin: '5rem 0 1rem'}}>Lowonganmu</h1>
 
           {/* card 1 */}
-          {List.map((item, index) => (
-            <Card style={card} key={index}>
+          {gig?.gigs?.map((gig, id) => (
+            <Card style={card} key={id}>
             <Card.Body>
               <Row>
                 <Col>
                 <a href='/daftar-pelamar' style={{color: 'black', textDecoration: 'none'}}>
-                  <Card.Title style={{fontWeight: 'bold'}}>{item.name}</Card.Title>
+                  <Card.Title style={{fontWeight: 'bold'}}>{gig.title}</Card.Title>
                 </a>
                 </Col>
                 <Col className='text-end'>
@@ -58,16 +72,18 @@ const HomeTempat = () => {
                     drop='end' 
                     title={<BsThreeDotsVertical style={{color: 'grey'}} />}
                     >
-                    <Dropdown.Item href="/lowongan/edit-lowongan">Ubah</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Hapus</Dropdown.Item>
+                    <Dropdown.Item href={`/lowongan/edit-lowongan/${gig.id}`}>
+                        Ubah
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleDelete(gig.id)}>Hapus</Dropdown.Item>
                   </DropdownButton>
                 </Col>
               </Row>
 
-              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiLocationMarker style={{fontSize: "0.8rem"}} /> {item.location}</Card.Subtitle>
-              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><BiDollar style={{fontSize: "0.8rem"}} /> {item.price}</Card.Subtitle>
+              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiLocationMarker style={{fontSize: "0.8rem"}} /> {gig.location}</Card.Subtitle>
+              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><BiDollar style={{fontSize: "0.8rem"}} /> {gig.fee}</Card.Subtitle>
               <Card.Text style={{fontSize: '0.7rem', marginTop: '1rem'}}>
-                {item.description}
+                {gig.description}
               </Card.Text>
             </Card.Body>
           </Card>
