@@ -38,7 +38,7 @@ function App() {
       <Route path="/lowongan" element={<HomeTempat />} />
       <Route path="/daftar-pelamar" element={<Pelamar />} />
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
-      <Route path="/lowongan/edit-lowongan" element={<EditLowongan />} />
+      <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
       <Route path="/profile-owner" element={<ProfileTempat />} />
     </Routes>
   );
