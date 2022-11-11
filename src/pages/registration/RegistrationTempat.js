@@ -22,7 +22,7 @@ const RegistrationTempat = () => {
 
     useEffect(() => {
         if (owner) {
-            window.location.href = "/login-tempat";
+            window.location.href = "/lowongan";
         }
 
         if (error) {

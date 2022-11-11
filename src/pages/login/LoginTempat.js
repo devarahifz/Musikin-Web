@@ -13,10 +13,8 @@ const LoginTempat = () => {
     });
 
     const { email, password } = formData;
-
     const dispatch = useDispatch();
-    
-    const { owner, status, error } = useSelector((state) => state.authOwner);
+    const { owner, error } = useSelector((state) => state.authOwner);
 
     useEffect(() => {
         if (owner) {
