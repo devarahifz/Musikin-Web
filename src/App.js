@@ -19,6 +19,8 @@ import Pelamar from "./pages/tempat/Pelamar";
 import FormLowongan from "./pages/tempat/FormLowongan";
 import EditLowongan from "./pages/tempat/EditLowongan";
 import ProfileTempat from "./pages/profile/ProfileTempat";
+import LoginAdmin from "./pages/admin/LoginAdmin";
+import HomeAdmin from "./pages/admin/HomeAdmin";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/login" element={<LoginMusisi />} />
+      <Route path="/admin/login" element={<LoginAdmin/>} />
+      <Route path="/admin/dashboard" element={<HomeAdmin/>} />
       <Route path="/registration" element={<RegistrationMusisi />} />
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
