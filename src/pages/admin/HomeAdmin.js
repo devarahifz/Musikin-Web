@@ -157,7 +157,7 @@ const Dashboard = () => {
                     </table>
                     </div>
                     <div className={toggleState === 3 ? "content  active-content" : "content d-none"}>
-                    <h1 className='text-center fw-bold'>Daftar Pengguna Pemilik Lowongan</h1>
+                    <h1 className='text-center fw-bold'>Daftar Lowongan</h1>
                     <table className="table table-bordered w-100 text-center align-middle">
                         <thead>
                             <tr>
