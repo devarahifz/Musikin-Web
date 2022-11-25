@@ -27,7 +27,40 @@ function NavbarLanding() {
     }
 
     return (
-        <Container fluid style={background} className='pt-5'>
+
+        <>
+        <div className='container-fluid' style={background}>
+            <div className='row justify-content-around'>
+                <div className='col-12 col-sm-4 px-4'>
+                <img src={logo} alt="logo" className='row' />
+                    <h1 className='row' style={brand}>Musikin</h1>
+                    <p className='row' style={font}>
+                        Cari live music keinginan kamu dan jadilah bintangnya
+                    </p>
+                </div>
+                <div className='col'>
+                    <div className='row justify-content-end'>
+                        <div className='col offset-sm-5' style={font}>
+                        <h6 className='mb-3'>Pengguna</h6>
+                        <a href='/login' className='mb-2' style={link}>Masuk Musisi</a>
+                        <a href='/login-tempat' className='mb-2' style={link}>Masuk Tempat</a>
+                        <a href='/registration' className='mb-2' style={link}>Daftar Musisi</a>
+                        <a href='/registration-tempat' className='mb-2' style={link}>Daftar Tempat</a>
+                    </div>
+                    <div className='col' style={font}>
+                        <h6 className='mb-3'>Eksplorasi</h6>
+                        <a href='/' className='mb-2' style={link}>Halaman Utama</a>
+                        <a href='/about' className='mb-2' style={link}>Tentang Kami</a>
+                        <p className='mt-2'>Kontak</p>
+                    </div>
+                    </div>
+                </div>
+                <p  style={copyright}>
+                        Copyright &copy; 2022. KPL. All rights reserved.
+                </p>
+            </div>
+        </div>
+        {/* <Container fluid style={background} className='pt-5'>
             <Row>
                 <Col>
                     <Row>
@@ -64,7 +97,9 @@ function NavbarLanding() {
                     </Row>
                 </Col>
             </Row>
-        </Container>
+        </Container> */}
+        </>
+
     )
 }
 

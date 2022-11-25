@@ -19,6 +19,7 @@ import Pelamar from "./pages/tempat/Pelamar";
 import FormLowongan from "./pages/tempat/FormLowongan";
 import EditLowongan from "./pages/tempat/EditLowongan";
 import ProfileTempat from "./pages/profile/ProfileTempat";
+import ConfirmationMusisiReg from "./pages/confirmation/confirmation_reg_musisi";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
       <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
       <Route path="/profile-owner" element={<ProfileTempat />} />
+      <Route path="/success" element={<ConfirmationMusisiReg/>} />
     </Routes>
   );
 }
