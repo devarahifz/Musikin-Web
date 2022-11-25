@@ -1,0 +1,39 @@
+@media (max-width: 500px) {
+    .landing-title-1 {
+        width: 100%;
+        display: block;
+        text-align: center !important;
+    }
+    .landing-title-1 p{
+        width: 100% !important;
+        font-size: 17px !important;
+    }
+    .landing-title-1 h1{
+        width: 100% !important;
+        font-size: 32px !important;
+    }
+    .landing-title-1 .ilu-1{
+        text-align: center !important;
+    }
+    .landing-title-2 {
+        width: 100%;
+        display: block;
+        text-align: center !important;
+    }
+    .landing-title-2 h1{
+        width: 100% !important;
+        font-size: 32px !important;
+    }
+    .landing-title-2 p{
+        width: 100% !important;
+        font-size: 17px !important;
+        text-align: center !important;
+    }
+    .landing-title-2 .ilu-2{
+        text-align: center !important;
+        order: -1 !important;
+    }
+    .coloumn-2{
+        order: -1 !important;
+    }
+}
