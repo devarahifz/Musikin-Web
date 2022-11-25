@@ -25,8 +25,10 @@ const HomeTempat = () => {
   dispatch(getAllGigs())
   }, [dispatch])
 
-  const handleDelete = (id) => {
-    dispatch(deleteGig(id))
+  const handleDelete = async (id) => {
+    await dispatch(deleteGig(id))
+    window.location.reload()
+    await dispatch(getAllGigs())
   }
   
   const card = {

@@ -156,7 +156,7 @@ export const gigSlice = createSlice({
       .addCase(createGig.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.gig.gigs.push(action.payload);
+        // state.gig.gigs.push(action.payload);
       })
       .addCase(createGig.rejected, (state, action) => {
         state.isLoading = false;

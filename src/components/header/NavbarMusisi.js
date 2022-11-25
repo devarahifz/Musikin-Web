@@ -3,7 +3,8 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap/';
 import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
 import { logout, reset } from "../../features/user/AuthSlice";
 
-const NavbarMusisi = () => {
+const NavbarMusisi = (props) => {
+    const { id } = props
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.authUser);
 
@@ -44,7 +45,7 @@ const NavbarMusisi = () => {
                 <Nav >
                     <Nav.Link href="/home-musisi" className="me-3" style={font}>CARI</Nav.Link>
                     <Nav.Link href="/riwayat" className="me-3" style={font}>RIWAYAT</Nav.Link>
-                    <Nav.Link href="/profile" className="me-3" style={font}>PROFIL</Nav.Link>
+                    <Nav.Link href={`/profile/${id}`} className="me-3" style={font}>PROFIL</Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>

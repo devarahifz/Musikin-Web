@@ -3,7 +3,9 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap/';
 import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
 import { logout, reset } from "../../features/owner/AuthSlice";
 
-const NavbarTempat = () => {
+const NavbarTempat = (props) => {
+    const { id } = props
+
     const dispatch = useDispatch();
     const { owner } = useSelector((state) => state.authOwner);
 
@@ -43,7 +45,7 @@ const NavbarTempat = () => {
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
                     <Nav.Link href="/lowongan" className="me-3" style={font}>LOWONGAN</Nav.Link>
-                    <Nav.Link href="/profile-owner" className="me-3" style={font}>PROFIL</Nav.Link>
+                    <Nav.Link href={ `/profile-owner/${id}` } className="me-3" style={font}>PROFIL</Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>

@@ -3,14 +3,8 @@ import { API_URL } from '../../configs/api';
 
 // Create new gig
 const createGig = async (data, token, id) => {
-  const response = await axios.post(`${API_URL}/gig`, 
-  {
-    owner_id: id,
-    location: data.location,
-    fee: data.fee,
-    title: data.title,
-    description: data.description
-  }, 
+  data.append('owner_id', id);
+  const response = await axios.post(`${API_URL}/gig`, data, 
     {
     headers: {
       Authorization: `Bearer ${token}`
