@@ -23,7 +23,7 @@ function NavbarLanding() {
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid>
             <Link to= "/">
-                <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+                <Navbar.Brand style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>

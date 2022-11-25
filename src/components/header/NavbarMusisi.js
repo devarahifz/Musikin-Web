@@ -40,25 +40,25 @@ const NavbarMusisi = (props) => {
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid>
             <Link to="/">
-                <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" />Musikin</Navbar.Brand>
+                <Navbar.Brand style={brand}><img src={logo} alt="logo" />Musikin</Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
-                    <Nav.Link href="/home-musisi" className="me-3" style={font}>
+                    <Nav.Link className="me-3" style={font}>
                         <Link to="/home-musisi"> DAFTAR </Link>
                     </Nav.Link>
-                    <Nav.Link href="/riwayat" className="me-3" style={font}>
+                    <Nav.Link className="me-3" style={font}>
                         <Link to="/riwayat"> RIWAYAT </Link>
                     </Nav.Link>
-                    <Nav.Link href="/profile" className="me-3" style={font}>
-                    <Link to="/profile"> PROFILE </Link>
+                    <Nav.Link className="me-3" style={font}>
+                        <Link to={`/profile/${id}`}> PROFILE </Link>
                     </Nav.Link>
                 </Nav>
                 </Container>
                 <Nav className='text-center'>
-                    <Nav.Link href="#logout"><Button className='py-2 px-4' onClick={onLogout} style={button}>KELUAR</Button></Nav.Link>
+                    <Nav.Link><Button className='py-2 px-4' onClick={onLogout} style={button}>KELUAR</Button></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
