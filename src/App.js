@@ -19,6 +19,9 @@ import Pelamar from "./pages/tempat/Pelamar";
 import FormLowongan from "./pages/tempat/FormLowongan";
 import EditLowongan from "./pages/tempat/EditLowongan";
 import ProfileTempat from "./pages/profile/ProfileTempat";
+import ConfirmationMusisiReg from "./pages/confirmation/confirmation_reg_musisi";
+import LoginAdmin from "./pages/admin/LoginAdmin";
+import HomeAdmin from "./pages/admin/HomeAdmin";
 
 function App() {
   return (
@@ -26,20 +29,22 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/login" element={<LoginMusisi />} />
+      <Route path="/admin/login" element={<LoginAdmin/>} />
+      <Route path="/admin/dashboard" element={<HomeAdmin/>} />
       <Route path="/registration" element={<RegistrationMusisi />} />
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
       <Route path="/home-musisi" element={<HomeMusisi/>} />
       <Route path="/riwayat" element={<Riwayat/>} />
-      <Route path="/detail" element={<DetailLowongan/>}/>
+      <Route path="/detail/:id" element={<DetailLowongan/>}/>
       <Route path="/detail/lamar" element={<Lamar/>}/>
-      <Route path="/profile" element={<ProfileMusisi/>}/>
-      <Route path="/profile/edit" element={<EditProfileMusisi/>}/>
+      <Route path="/profile/:id" element={<ProfileMusisi/>}/>
+      <Route path="/profile/edit/:id" element={<EditProfileMusisi/>}/>
       <Route path="/lowongan" element={<HomeTempat />} />
       <Route path="/daftar-pelamar" element={<Pelamar />} />
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
-      <Route path="/lowongan/edit-lowongan" element={<EditLowongan />} />
-      <Route path="/profile-owner" element={<ProfileTempat />} />
+      <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
+      <Route path="/profile-owner/:id" element={<ProfileTempat />} />
     </Routes>
   );
 }

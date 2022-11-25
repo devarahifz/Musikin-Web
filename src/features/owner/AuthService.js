@@ -28,10 +28,42 @@ const logout = () => {
     localStorage.removeItem("owner");
 }
 
+// Get owner by id
+const getOwnerById = async (id) => {
+    const response = await axios.get(`${API_URL}/owner/${id}`);
+
+    return response.data;
+}
+
+// Update owner
+const updateOwner = async (id, data, token) => {
+    const response = await axios.put(`${API_URL}/owner/${id}`, data, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    return response.data;
+}
+
+// Update owner password
+const updateOwnerPassword = async (id, data, token) => {
+    const response = await axios.put(`${API_URL}/owner/${id}/changepassword`, data, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    return response.data;
+}
+
 const AuthService = {
     register,
     login,
-    logout
+    logout,
+    getOwnerById,
+    updateOwner,
+    updateOwnerPassword
 }
 
 export default AuthService;
