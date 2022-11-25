@@ -39,7 +39,7 @@ function NavbarLanding() {
                 <Nav className='justify-content-center'>
                     <Nav.Link>
                         <Link to="/login-tempat">
-                            <Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>Sebagai Pemilik Tempat</Button>
+                            <Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>SEBAGAI PEMILIK TEMPAT</Button>
                         </Link>
                     </Nav.Link>
                 </Nav>

@@ -55,7 +55,8 @@ const LoginMusisi = () => {
         textAlign: 'center'
     }
     const link = {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: '#4361EE'
     }
     const input = {
         border: "2px solid #ECECEC"

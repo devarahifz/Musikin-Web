@@ -48,7 +48,7 @@ const RegistrationTempat = () => {
     const card = {
         border: "2px solid #ECECEC",
         borderRadius: "12px",
-        padding: "3rem 4.5rem",
+        padding: "3rem 4rem",
         margin: "5rem auto",
         width: "30%",
         textAlign: 'center'
@@ -61,7 +61,7 @@ const RegistrationTempat = () => {
         <NavbarLanding />
             <div style={card}>
                 <img src={logo} alt="logo" />
-                <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Daftar akun sebagai <b>tempat</b></p>
+                <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Daftar akun sebagai <b>pemilik tempat</b></p>
                 <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3 text-start">
                         <Form.Label>Nama</Form.Label>

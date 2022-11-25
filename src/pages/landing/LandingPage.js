@@ -27,7 +27,7 @@ const LandingPage = () => {
           <Col className='text-end'>
             <h1 style={{fontWeight: 'bold', fontSize: '3rem'}}>Susah Cari Musisi?</h1>
             <p style={{fontSize: '1.5rem', textAlign: 'flex-end', width: '55%', marginLeft: '45%' }}>Ayo unggah lowongan pengisi yang bakal tampil biar bikin keseruan ditempatmu! </p>
-            <a href="/registration-tempat"><Button className='py-2 px-4 mt-5' style={{background: '#4361EE', fontWeight: '500'}}>DAFTAR Sebagai Pemilik Tempat</Button></a>
+            <a href="/registration-tempat"><Button className='py-2 px-4 mt-5' style={{background: '#4361EE', fontWeight: '500'}}>DAFTAR SEBAGAI PEMILIK TEMPAT</Button></a>
           </Col>
           <Col className='text-start'>
             <img src={gambar2} className='w-auto col' />

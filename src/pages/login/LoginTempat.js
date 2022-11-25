@@ -50,13 +50,14 @@ const LoginTempat = () => {
     const card = {
         border: "2px solid #ECECEC",
         borderRadius: "12px",
-        padding: "3rem 4.5rem",
+        padding: "3rem 4rem",
         margin: "5rem auto",
         width: "30%",
         textAlign: 'center'
     }
     const link = {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: '#4361EE'
     }
     const input = {
         border: "2px solid #ECECEC"
@@ -66,7 +67,7 @@ const LoginTempat = () => {
         <NavbarLanding />
             <div style={card}>
                 <img src={logo} alt="logo" />
-                <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Masuk dengan akun <b>tempat</b></p>
+                <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Masuk dengan akun <b>pemilik tempat</b></p>
                 <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
@@ -90,7 +91,7 @@ const LoginTempat = () => {
                     <a href="#" style={link}>Lupa password?</a>
                     <br/>
                     <p style={{margin: '3rem 0'}}>
-                        Belum punya akun <b>tempat</b>? <br/>
+                        Belum punya akun <b>pemilik tempat</b>? <br/>
                         Klik <a href="/registration-tempat" style={link}>disini</a> untuk membuat akun.
                     </p>
                     <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>MASUK</Button>
