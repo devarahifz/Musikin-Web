@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
 import { login, reset } from "../../features/owner/AuthSlice";
+import { AiFillEyeInvisible } from 'react-icons/ai';
 
 const LoginTempat = () => {
     const [formData, setFormData] = useState({
@@ -13,10 +14,8 @@ const LoginTempat = () => {
     });
 
     const { email, password } = formData;
-
     const dispatch = useDispatch();
-    
-    const { owner, status, error } = useSelector((state) => state.authOwner);
+    const { owner, error } = useSelector((state) => state.authOwner);
 
     useEffect(() => {
         if (owner) {
@@ -46,6 +45,16 @@ const LoginTempat = () => {
 
         dispatch(login(data));
     };
+    
+    const handleShowPassword = () => {
+        const password = document.getElementById('password')
+
+        if (password.type === 'password') {
+            password.type = 'text'
+        } else {
+            password.type = 'password'
+        }
+    }
 
     const card = {
         border: "2px solid #ECECEC",
@@ -79,14 +88,19 @@ const LoginTempat = () => {
                         style={input} />
                     </Form.Group>
 
-                    <Form.Group className="mb-3 text-start" controlId="formBasicPassword">
+                    <Form.Group className="mb-3 text-start position-relative">
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
-                        type="password" 
-                        name="password"
-                        value={password} 
-                        onChange={onChange} 
-                        style={input} />
+                            id="password"
+                            type="password" 
+                            name="password"
+                            value={password} 
+                            onChange={onChange} 
+                            style={input} 
+                        />
+                            <span style={{right: '10px', top: '53%', color: 'grey'}} className='position-absolute' onClick={handleShowPassword}>
+                                <AiFillEyeInvisible/>
+                            </span>
                     </Form.Group>
                     <a href="#" style={link}>Lupa password?</a>
                     <br/>

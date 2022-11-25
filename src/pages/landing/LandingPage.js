@@ -6,7 +6,8 @@ import signal from '../../assets/images/Signal.png'
 import gambar1 from '../../assets/images/Playing jazz-pana.png'
 import gambar2 from '../../assets/images/Hiring-pana.png'
 import testimoni from '../../assets/images/Testimoni.png'
-import './responsive.css'
+import Carousel from '../../components/Carousel/Carousel'
+import "./responsive.css"
 
 const LandingPage = () => {
   return (

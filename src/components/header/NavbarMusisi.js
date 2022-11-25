@@ -4,7 +4,8 @@ import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
 import { logout, reset } from "../../features/user/AuthSlice";
 import { Link } from 'react-router-dom';
 
-const NavbarMusisi = () => {
+const NavbarMusisi = (props) => {
+    const { id } = props
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.authUser);
 

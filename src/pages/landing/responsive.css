@@ -37,3 +37,37 @@
         order: -1 !important;
     }
 }
+/* @media (min-width: 768px) {
+    .landing-title-1 {
+        width: 50%;
+        display: block;
+        text-align: left !important;
+    }
+    .landing-title-1 p{
+        width: 60% !important;
+    }
+    .landing-title-1 .ilu-1 img{
+        text-align: right !important;
+    }
+    .landing-title-2 {
+        width: 50%;
+        display: block;
+        text-align: right !important;
+
+    }
+    .landing-title-2 p{
+        width: 60% !important;
+        margin-left:45%;
+    }
+    .landing-title-2 .ilu-2 img{
+        text-align: left !important;
+
+    }
+    .landing-title-2 .column-ilu-2{
+        order: -1 !important;
+        margin-top: 200px;
+    }
+    .coloumn-2{
+        order: 2 !important;
+    }
+} */
