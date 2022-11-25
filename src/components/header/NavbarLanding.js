@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar, Button } from 'react-bootstrap/';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
 
 function NavbarLanding() {
@@ -21,16 +22,26 @@ function NavbarLanding() {
     return (
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid>
-            <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+            <Link to= "/">
+                <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>
                 <Nav className="me-auto"></Nav>
                 <Nav className="justify-content-center">
-                    <Nav.Link href="/login" className="me-5" style={font}>MASUK</Nav.Link>
-                    <Nav.Link href="/registration" className="me-3" style={font}>DAFTAR</Nav.Link>
+                    <Nav.Link className="me-5" style={font}>
+                        <Link to="/login"> MASUK </Link>
+                    </Nav.Link>
+                    <Nav.Link className="me-3" style={font}>
+                        <Link to="/registration"> DAFTAR </Link>
+                    </Nav.Link>
                 </Nav>
                 <Nav className='justify-content-center'>
-                    <Nav.Link href="/login-tempat"><Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>SEBAGAI TEMPAT</Button></Nav.Link>
+                    <Nav.Link>
+                        <Link to="/login-tempat">
+                            <Button className='py-2 px-4' style={{background: '#4361EE', fontWeight: '500'}}>SEBAGAI TEMPAT</Button>
+                        </Link>
+                    </Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

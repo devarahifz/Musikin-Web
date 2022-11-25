@@ -1,4 +1,5 @@
 import { Container, Navbar } from 'react-bootstrap/';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/Musikin Logo Colored 32 1.png'
 
 const NavbarAbout = () => {
@@ -16,7 +17,9 @@ const NavbarAbout = () => {
     return (
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid style={{justifyContent: 'center'}}>
-                <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+                <Link to="/">
+                    <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+                </Link>
             </Container>
         </Navbar>    
     )
