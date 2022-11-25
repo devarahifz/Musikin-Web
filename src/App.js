@@ -19,6 +19,7 @@ import Pelamar from "./pages/tempat/Pelamar";
 import FormLowongan from "./pages/tempat/FormLowongan";
 import EditLowongan from "./pages/tempat/EditLowongan";
 import ProfileTempat from "./pages/profile/ProfileTempat";
+import ConfirmationMusisiReg from "./pages/confirmation/confirmation_reg_musisi";
 
 function App() {
   return (
