@@ -53,7 +53,7 @@ function NavbarLanding() {
                             <a href='/login' className='mb-2' style={link}>Masuk Musisi</a>
                             <a href='/login-tempat' className='mb-2' style={link}>Masuk Tempat</a>
                             <a href='/registration' className='mb-2' style={link}>Daftar Musisi</a>
-                            <a href='/registration-tempat' className='mb-2' style={link}>Daftar Tempat</a>
+                            <a href='/registration-tempat' className='mb-2' style={link}>Daftar Pemilik Tempat</a>
                         </Col>
                         <Col style={font}>
                             <h6 className='mb-3'>Eksplorasi</h6>
