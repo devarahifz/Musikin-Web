@@ -50,12 +50,23 @@ const deleteGig = async (id, token) => {
   return response.data;
 }
 
+// Get all gigs by owner id
+const getAllGigsByOwnerId = async (id, token) => {
+  const response = await axios.get(`${API_URL}/owner/${id}/gigs`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return response.data;
+}
+
 const GigService = {
   createGig,
   getAllGigs,
   getGigById,
   updateGig,
-  deleteGig
+  deleteGig,
+  getAllGigsByOwnerId
 }
 
 export default GigService;

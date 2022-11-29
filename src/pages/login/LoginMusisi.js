@@ -82,6 +82,7 @@ const LoginMusisi = () => {
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
+                        required
                         type="email"
                         name="email" 
                         value={email} 

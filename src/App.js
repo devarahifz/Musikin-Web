@@ -35,7 +35,7 @@ function App() {
       <Route path="/login-tempat" element={<LoginTempat />} />
       <Route path="/registration-tempat" element={<RegistrationTempat />} />
       <Route path="/home-musisi" element={<HomeMusisi/>} />
-      <Route path="/riwayat" element={<Riwayat/>} />
+      <Route path="/riwayat/:id" element={<Riwayat/>} />
       <Route path="/detail/:id" element={<DetailLowongan/>}/>
       <Route path="/detail/lamar" element={<Lamar/>}/>
       <Route path="/profile/:id" element={<ProfileMusisi/>}/>
@@ -45,6 +45,7 @@ function App() {
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
       <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
       <Route path="/profile-owner/:id" element={<ProfileTempat />} />
+      <Route path="/confirmation" element={<ConfirmationMusisiReg />} />
     </Routes>
   );
 }

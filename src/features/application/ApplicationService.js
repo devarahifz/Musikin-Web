@@ -68,13 +68,25 @@ const deleteApplication = async (id, token) => {
   return response.data;
 }
 
+// Get all applications by user id
+const getAllApplicationsByUserId = async (id, token) => {
+  const response = await axios.get(`${API_URL}/user/${id}/applications`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return response.data;
+}
+
 const ApplicationService = {
   createApplication,
   getAllApplications,
   getApplicationById,
   updateApplication,
   updateApplicationStatus,
-  deleteApplication
+  deleteApplication,
+  getAllApplicationsByUserId
 };
 
 export default ApplicationService;

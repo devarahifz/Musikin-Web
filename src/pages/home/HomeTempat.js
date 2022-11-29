@@ -5,7 +5,7 @@ import { BiDollar } from 'react-icons/bi'
 import { BsThreeDotsVertical, BsPlusLg } from 'react-icons/bs'
 import { HiLocationMarker } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllGigs, deleteGig } from '../../features/gig/GigSlice'
+import { getAllGigs, getAllGigsByOwnerId, deleteGig } from '../../features/gig/GigSlice'
 
 const HomeTempat = () => {
   const { gig } = useSelector((state) => state.gig)
@@ -13,7 +13,7 @@ const HomeTempat = () => {
   
   useEffect(() => {
     (async () => {
-    await dispatch(getAllGigs())
+    await dispatch(getAllGigsByOwnerId())
 
     document.querySelectorAll('.dropdown-toggle').forEach((card) => {
       card.style.background = 'none'
@@ -22,7 +22,7 @@ const HomeTempat = () => {
     })
   })()
 
-  dispatch(getAllGigs())
+  dispatch(getAllGigsByOwnerId())
   }, [dispatch])
 
   const handleDelete = async (id) => {
@@ -58,7 +58,7 @@ const HomeTempat = () => {
           <h1 style={{fontSize: '3rem', fontWeight: 'bold', margin: '5rem 0 1rem'}}>Lowonganmu</h1>
 
           {/* card 1 */}
-          {gig?.gigs?.map((gig, id) => (
+          {gig?.gig?.map((gig, id) => (
             <Card style={card} key={id}>
             <Card.Body>
               <Row>

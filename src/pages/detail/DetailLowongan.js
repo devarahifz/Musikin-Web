@@ -4,13 +4,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaMapMarkerAlt,FaDollarSign } from "react-icons/fa"
-import NavbarMusisi from '../../components/header/NavbarMusisi'
-import Footer from '../../components/footer/FooterComponent'
 import { useSelector, useDispatch } from 'react-redux'
 import { getGigById } from '../../features/gig/GigSlice';
 import { useParams } from 'react-router-dom';
 import { Button, Modal, Form } from "react-bootstrap";
 import { createApplication, reset } from '../../features/application/ApplicationSlice';
+import Layout from '../../components/layout/LayoutMusisi'
 
 const DetailLowongan = () => {
     const { gig } = useSelector((state) => state.gig)
@@ -63,7 +62,7 @@ const DetailLowongan = () => {
 
   return (
     <>
-        <NavbarMusisi/>
+        <Layout>
         <div className='container mx-auto' style={{width: '1080px', marginRight:'180px', marginLeft:'180px' ,marginTop: '64px', marginBottom:'64px'}}>
             <div className='row'>
                 <div className='col'>
@@ -131,7 +130,7 @@ const DetailLowongan = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-        <Footer/>
+        </Layout>
     </>
   )
 }

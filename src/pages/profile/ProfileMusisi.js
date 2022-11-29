@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import NavbarMusisi from '../../components/header/NavbarMusisi'
-import Footer from '../../components/footer/FooterComponent'
 import { getUserById } from '../../features/user/AuthSlice'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import Layout from '../../components/layout/LayoutMusisi'
 
 const ProfileMusisi = () => {
   const { user } = useSelector((state) => state.authUser)
@@ -18,7 +17,7 @@ const ProfileMusisi = () => {
 
   return (
     <div>
-        <NavbarMusisi id={user?.data?.id}/>
+        <Layout>
         <div className='container-profile-musisi' style={{marginRight: '185px',marginLeft:'185px', marginTop:'64px' , marginBottom:'64px'}}>
             <h1 className='text-center fw-bold mb-5 pb-3'>Profil</h1>
             <img src={user?.user?.user_photo} className="mx-auto d-block mb-3" style={{width:'200px',height:'200px', borderRadius:'999px', objectFit:'cover', objectPosition:'center'}} alt={user?.user?.user_name}/>
@@ -31,7 +30,7 @@ const ProfileMusisi = () => {
             Augue neque gravida in fermentum et. Faucibus pulvinar elementum integer enim neque volutpat ac. Id venenatis a condimentum vitae sapien. Et pharetra pharetra massa massa ultricies mi quis. Interdum posuere lorem ipsum dolor sit. Auctor augue mauris augue neque gravida. Enim ut tellus elementum sagittis vitae et leo duis. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Elementum sagittis vitae et leo duis ut diam quam. Risus feugiat in ante metus dictum at. Eget egestas purus viverra accumsan in nisl nisi scelerisque. Diam vel quam elementum pulvinar etiam non. Tempus imperdiet nulla malesuada pellentesque elit eget gravida. Arcu cursus vitae congue mauris rhoncus. Nullam non nisi est sit amet facilisis magna. At urna condimentum mattis pellentesque id. Maecenas sed enim ut sem viverra. At ultrices mi tempus imperdiet nulla. Sed faucibus turpis in eu mi bibendum neque. Laoreet non curabitur gravida arcu ac tortor dignissim.
             </p>
         </div>
-        <Footer/>
+        </Layout>
     </div>
   )
 }

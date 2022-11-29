@@ -111,6 +111,29 @@ export const deleteGig = createAsyncThunk(
   }
 );
 
+// Get all gigs by owner id
+export const getAllGigsByOwnerId = createAsyncThunk(
+  "gig/getAllGigsByOwnerId",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().authOwner?.owner?.data?.token;
+      id = thunkAPI.getState().authOwner?.owner?.data?.id;
+      const response = await GigService.getAllGigsByOwnerId(id, token);
+      return response;
+    } catch (error) {
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+        error.message ||
+        error.toString();
+        
+        return thunkAPI.rejectWithValue(message);
+      }
+  }
+);
+
+
 // Gig slice
 export const gigSlice = createSlice({
   name: "gig",
@@ -182,9 +205,22 @@ export const gigSlice = createSlice({
       .addCase(deleteGig.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.gig = state.gig.gigs.filter((gig) => gig.id !== action.payload);
+        state.gig = state.gig.gig.filter((gig) => gig.id !== action.payload);
       })  
       .addCase(deleteGig.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAllGigsByOwnerId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllGigsByOwnerId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.gig = action.payload;
+      })
+      .addCase(getAllGigsByOwnerId.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

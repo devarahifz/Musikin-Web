@@ -22,12 +22,14 @@ const Pelamar = () => {
     const handleAccept = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'accepted'}}))
+            await dispatch(getAllApplications())
         })()
     }
 
     const handleReject = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'rejected'}}))
+            await dispatch(getAllApplications())
         })()
     }
     
@@ -69,13 +71,13 @@ const Pelamar = () => {
 
                     <Card.Text style={{marginTop: '1rem', textAlign: 'center'}}>
                         <Button href={application.portofolio_link} style={{opacity: '1', border: '2px solid #4361EE', background: 'white', color: '#4361EE', width: '100%'}} >PORTOFOLIO</Button>
-                            {application.status === 'accepted' && application.status !== 'rejected' ? (
+                            {application.status === 'accepted' || application.status === 'rejected' ? (
                                 <Row style={{marginTop: '1rem'}}>
                                     <Col sm={6}>
-                                        <Button disabled style={{background: '#4361EE', width: '100%'}} >DITERIMA</Button>
+                                        <Button disabled style={{background: application.status === 'accepted' ? '#4361EE' : 'grey', width: '100%'}} >{application.status === 'accepted' ? 'DITERIMA' : 'TERIMA' }</Button>
                                     </Col>
                                     <Col sm={6}>
-                                        <Button disabled style={{width: '100%', background: 'grey'}} >TOLAK</Button>
+                                        <Button disabled style={{background: application.status === 'rejected' ? null : 'grey', width: '100%'}} variant={application.status === 'rejected' ? 'danger' : 'danger'} >{application.status === 'rejected' ? 'DITOLAK' : 'TOLAK'}</Button>
                                     </Col>
                                 </Row>
                             ) : (
