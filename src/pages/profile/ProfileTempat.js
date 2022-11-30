@@ -7,6 +7,7 @@ import { updateOwner, updateOwnerPassword, reset, getOwnerById } from '../../fea
 import { useParams } from 'react-router-dom'
 import { AiFillEyeInvisible } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
+import './responsive.css'
 
 const ProfileTempat = () => {
     const { owner } = useSelector((state) => state.authOwner)
@@ -109,7 +110,8 @@ const ProfileTempat = () => {
             border: "2px solid #ECECEC"
         },
         form : {
-            width: "50%",
+            maxWidth: "50%",
+            minWidth: "300px",
             margin: "2rem auto"
         }
     }
@@ -119,11 +121,11 @@ const ProfileTempat = () => {
         <Navbar id={owner?.owner?.id} />
             <Container className="my-5">
             <div className='container row d-flex mx-auto mt-5' style={{alignItems: 'center'}}>
-                <div className='col-8 offset-2'>
-                    <h1 style={{fontSize: '3rem', fontWeight: 'bold', textAlign: 'center'}}>Edit Profile</h1>
+                <div className='col-12 col-sm-8 offset-0 offset-sm-2'>
+                    <h1 className='title' style={{ fontWeight: 'bold', textAlign: 'center'}}>Edit Profile</h1>
                 </div>
-                <div className='col-2'>
-                    <Button onClick={handleShow} className='float-right W-100' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
+                <div className='col-12 col-sm-2'>
+                    <Button onClick={handleShow} className='float-right W-100 d-none d-sm-inline-flex' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
                 </div>
             </div>
             <Form onSubmit={onSubmit} style={Style.form}>
@@ -145,6 +147,7 @@ const ProfileTempat = () => {
                     onChange={onChange}
                     style={Style.input} />
                 </Form.Group>
+                <Button onClick={handleShow} className='float-right W-100 d-block d-sm-none p-0 py-2' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
                 <Form.Group controlId="formFileLg" className="mb-3 d-none">
                     <Form.Label>Foto</Form.Label>
                     <Form.Control 
@@ -156,8 +159,8 @@ const ProfileTempat = () => {
                         style={Style.input} 
                     />
                 </Form.Group>
-                    <Button type='submit' className='py-3 my-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>SUBMIT</Button>
-                    <Button href='/lowongan' className='py-3 w-100' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
+                    <Button type='submit' className='py-2 my-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>SUBMIT</Button>
+                    <Button href='/lowongan' className='py-2 w-100' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
                 </Form>
             </Container>
 

@@ -9,9 +9,13 @@ const CardsMusisi = (props) => {
     <a href={`/detail/${id}`} style={{color: 'black', textDecoration: 'none'}}>
     <div className="card-body">
         <h5 className="card-title fw-bold">{title}</h5>
-        <p className="card-subtitle mb-2"><FaMapMarkerAlt/>{location}</p>
-        <p className="card-subtitle mb-2"><FaDollarSign/>Rp {fee}</p>
-        <p className="card-text" style={{fontSize: '10px'}}>{description}</p>
+        <p className="card-subtitle mb-2" style={{fontSize: "10px"}}><FaMapMarkerAlt/>{location}</p>
+        <p className="card-subtitle mb-2" style={{fontSize: "10px"}}><FaDollarSign/>Rp {fee}</p>
+        <p className="card-text" style={{fontSize: '10px'}}>
+          {description.length > 150
+          ? description.substring(0,120) + "..."
+          : description
+          }</p>
     </div>
     </a>
     </div>

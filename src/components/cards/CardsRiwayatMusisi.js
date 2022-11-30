@@ -1,7 +1,8 @@
 import React from 'react'
 import { FaMapMarkerAlt,FaDollarSign,FaArrowRight } from "react-icons/fa"
-
+import './responsivetext.css'
 const CardsRiwayatMusisi = (props) => {
+    
     const { createdAt, status, id } = props
     const style = {
         applied : {
@@ -24,17 +25,17 @@ const CardsRiwayatMusisi = (props) => {
     <div className="card" style={{minheight: '112px' , borderRadius: '12px', border: '2px solid #ECECEC'}}>
     <div className="card-body ">
         <div className='row align-middle justify-content'>
-            <div className='col ps-5 ms-3'>
+            <div className='col-12 col-sm ms-0 ms-sm-3 text-center text-sm-start'>
                 <h5 className="card-title fw-bold mt-3 ">Starbucks</h5>
                 <p className="card-subtitle mb-2" style={{fontSize: '10px'}}><FaMapMarkerAlt/>Mall Kelapa Gading,Jakarta Timur</p>
             </div>
-            <div className='col text-center'>
-                <p className="card-subtitle mt-4"><FaDollarSign/>Rp 500.000</p>
+            <div className='col-6 col-sm text-center'>
+                <p className="card-subtitle mt-4 texts"><FaDollarSign/>Rp 500.000</p>
             </div>
-            <div className='col text-center'>
-                <p className=' mt-4'>{createdAt}</p>
+            <div className='col-6 col-sm text-center'>
+                <p className=' mt-4 texts'>{createdAt}</p>
             </div>
-            <div className='col text-center'>
+            <div className='col-6 col-sm text-center'>
                 <div 
                     className='badge mt-4' 
                     style={status === 'applied' ? style.applied : status === 'accepted' ? style.accepted : status === 'rejected' && style.rejected}
@@ -42,7 +43,7 @@ const CardsRiwayatMusisi = (props) => {
                     {status === 'applied' ? 'Dalam Ulasan' : status === 'accepted' ? 'Diterima' : status === 'rejected' && 'Ditolak'}
                 </div>
             </div>
-            <a href={`/detail/${id}`} className='col text-center'>
+            <a href={`/detail/${id}`} className='col-6 col-sm text-center'>
                 <button className='btn btn-primary mt-3'>DETAIL <FaArrowRight/></button>
             </a>
         </div>

@@ -39,7 +39,7 @@ const HomeMusisi = () => {
   return (
     <>
       <Layout>
-        <div className='container py-5 my-3'>
+        <div className='container mb-5 py-5 my-3' style={{minHeight: "100vh"}}>
           <h1 className='text-center fw-bold pb-3 mb-5'>Cari Live Performance-mu Disini!</h1>
           <div className='mx-auto justify-content-center w-50 pb-5 d-flex d-none'>
             <input className='w-100' type='form-control rounded-0' placeholder='Ketikkan keyword lokasi, jumlah bayaran, atau deskripsi' /><button className='btn btn-primary rounded-0'><FaSearch/></button>
