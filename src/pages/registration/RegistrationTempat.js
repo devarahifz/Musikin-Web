@@ -6,6 +6,8 @@ import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
 import { register, reset } from "../../features/owner/AuthSlice";
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegistrationTempat = () => {
     const [formData, setFormData] = useState({
@@ -44,6 +46,19 @@ const RegistrationTempat = () => {
         e.preventDefault();
 
         dispatch(register(formData));
+        if (email === "" || password === "" || name === "" || phone === "" || status === "failed" || error === "Unauthorized") {
+            toast.error('Harap masukkan Form dengan sesuai', { 
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                icon: false,
+            });
+        }
     };
 
     const handleShowPassword = () => {

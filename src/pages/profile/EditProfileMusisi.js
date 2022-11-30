@@ -6,6 +6,8 @@ import { AiFillEyeInvisible } from 'react-icons/ai'
 import Layout from '../../components/layout/LayoutMusisi'
 import { Button, Modal, Form } from "react-bootstrap";
 import { MdArrowForwardIos } from 'react-icons/md'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProfileMusisi = () => {
   const { user } = useSelector((state) => state.authUser)
@@ -61,7 +63,41 @@ const EditProfileMusisi = () => {
     (async () => {
       e.preventDefault()
       await dispatch(updateUserPassword({id, user: formDataPassword}))
-      window.location.href = `/profile/edit/${id}`
+      if (formDataPassword.password === "" || formDataPassword.verifyPassword === "" || formDataPassword.password !== formDataPassword.verifyPassword) {
+        toast.error('Pastikan Password Anda sudah sesuai', { 
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          icon: false,
+        });
+        setFormDataPassword({
+          password: "",
+          verifyPassword: "",
+        })
+      } else {
+        toast.success('Ganti Password Berhasil', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          icon: false,
+          });
+        setFormDataPassword({
+          password: "",
+          verifyPassword: "",
+        })
+      }
+      setShow(false)
+      // window.location.href = `/profile/edit/${id}`
     })()
   }
 

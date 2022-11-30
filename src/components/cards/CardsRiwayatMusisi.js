@@ -39,7 +39,7 @@ const CardsRiwayatMusisi = (props) => {
                     className='badge mt-4' 
                     style={status === 'applied' ? style.applied : status === 'accepted' ? style.accepted : status === 'rejected' && style.rejected}
                 >
-                    {status}
+                    {status === 'applied' ? 'Dalam Ulasan' : status === 'accepted' ? 'Diterima' : status === 'rejected' && 'Ditolak'}
                 </div>
             </div>
             <a href={`/detail/${id}`} className='col text-center'>

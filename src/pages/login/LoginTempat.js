@@ -6,6 +6,8 @@ import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
 import { login, reset } from "../../features/owner/AuthSlice";
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginTempat = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +17,7 @@ const LoginTempat = () => {
 
     const { email, password } = formData;
     const dispatch = useDispatch();
-    const { owner, error } = useSelector((state) => state.authOwner);
+    const { owner, status, error } = useSelector((state) => state.authOwner);
 
     useEffect(() => {
         if (owner) {
@@ -44,6 +46,19 @@ const LoginTempat = () => {
         };
 
         dispatch(login(data));
+        if (email === "" || password === "" || status === "failed" || error === "Unauthorized") {
+            toast.error('Email atau Password salah', { 
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                icon: false,
+            });
+        }
     };
     
     const handleShowPassword = () => {

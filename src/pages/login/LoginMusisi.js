@@ -6,6 +6,8 @@ import NavbarLanding from '../../components/header/NavbarLanding'
 import logo from '../../assets/images/Musikin Logo Login.png'
 import { login, reset } from "../../features/user/AuthSlice";
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginMusisi = () => {
     const [formData, setFormData] = useState({
@@ -45,6 +47,19 @@ const LoginMusisi = () => {
             password: password
         }
         dispatch(login(data));
+        if (email === "" || password === "" || status === "failed" || error === "Unauthorized") {
+            toast.error('Email atau Password salah', { 
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                icon: false,
+            });
+        }
     };
 
     const handleShowPassword = () => {
@@ -82,7 +97,6 @@ const LoginMusisi = () => {
                     <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
-                        required
                         type="email"
                         name="email" 
                         value={email} 

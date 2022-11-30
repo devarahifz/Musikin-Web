@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // Pages
 import LandingPage from "./pages/landing/LandingPage";
@@ -25,6 +26,8 @@ import HomeAdmin from "./pages/admin/HomeAdmin";
 
 function App() {
   return (
+    <>
+    <ToastContainer className="mt-5 pt-5" />
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/about" element={<AboutUs />} />
@@ -47,6 +50,7 @@ function App() {
       <Route path="/profile-owner/:id" element={<ProfileTempat />} />
       <Route path="/confirmation" element={<ConfirmationMusisiReg />} />
     </Routes>
+    </>
   );
 }
 
