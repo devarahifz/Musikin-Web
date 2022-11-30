@@ -6,6 +6,7 @@ import { AiFillEyeInvisible } from 'react-icons/ai'
 import Layout from '../../components/layout/LayoutMusisi'
 import { Button, Modal, Form } from "react-bootstrap";
 import { MdArrowForwardIos } from 'react-icons/md'
+import './responsive.css'
 
 const EditProfileMusisi = () => {
   const { user } = useSelector((state) => state.authUser)
@@ -107,15 +108,15 @@ const EditProfileMusisi = () => {
   return (
     <div>
       <Layout>
-        <div className='container row d-flex mx-auto mt-5'>
+        <div className='container row d-flex mx-auto mt-5 w-full'>
           <div className='col-8 offset-2'>
-            <h1 className='text-center fw-bold mb-5 pb-3'>Edit Profil</h1>
+            <h1 className='text-center fw-bold mb-5 pb-3 title'>Edit Profil</h1>
           </div>
           <div className='col-2'>
-            <Button onClick={handleShow} className='float-right W-100' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
+            <Button onClick={handleShow} className='float-right W-100 d-none d-sm-inline-flex' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
           </div>
         </div>
-        <form onSubmit={onSubmit} className='container-profile-musisi mx-auto' style={{maxWidth:'640px', marginRight: '400px',marginLeft:'400px', marginTop:'64px' , marginBottom:'64px'}}>
+        <form onSubmit={onSubmit} className='container-profile-musisi mx-auto' style={{maxWidth:'50%',minWidth: "300px", marginRight: '400px',marginLeft:'400px', marginTop:'32px' , marginBottom:'64px'}}>
           <p> Foto Profil </p>
           <div className='row mx-auto'>
             <div className='col-12 col-md-4'>
@@ -124,7 +125,7 @@ const EditProfileMusisi = () => {
             <div className='col mt-5'>
               <input 
                 className='btn btn-light fw-semibold mb-2' 
-                style={{border: '2px solid #4361EE' , color: '#4361EE'}}
+                style={{border: '2px solid #4361EE' , color: '#4361EE',width: '250px'}}
                 type="file" 
                 name="user_photo"
                 onChange={handleChange}
@@ -135,7 +136,7 @@ const EditProfileMusisi = () => {
           <p className='m-0'>Nama</p>
           <input 
             className='w-100  p-2 mb-3' 
-            style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px', height:'48px'}} 
+            style={{border:'2px solid #ECECEC', borderRadius:'8px',  height:'48px'}} 
             type="text" 
             name="user_name"
             value={formData.user_name}
@@ -144,16 +145,17 @@ const EditProfileMusisi = () => {
           <p className='m-0'>Email</p>
           <input 
             className='w-100  p-2 mb-3' 
-            style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px', height:'48px'}} 
+            style={{border:'2px solid #ECECEC', borderRadius:'8px',  height:'48px'}} 
             type="email" 
             name="user_email"
             value={formData.user_email}
             onChange={onChange}
           />
+          <Button onClick={handleShow} className='float-right W-100 d-block d-sm-none p-0 py-1' style={{color: '#4361EE', background: 'none', border: 'none', alignItems: 'center', display: 'flex', fontWeight: '500'}}>GANTI PASSWORD  <MdArrowForwardIos /></Button>
           <p className='m-0'>Nomor Handphone</p>
           <input 
             className='w-100  p-2 mb-3' 
-            style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px', height:'48px'}} 
+            style={{border:'2px solid #ECECEC', borderRadius:'8px',  height:'48px'}} 
             type="number"
             name='user_phone' 
             value={formData.user_phone}
@@ -163,7 +165,7 @@ const EditProfileMusisi = () => {
           <textarea 
             className='w-100  p-2 mb-3' 
             rows="4" 
-            style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px'}} 
+            style={{border:'2px solid #ECECEC', borderRadius:'8px'}} 
             value="Lorem Ipsum"
           />
           <button type='submit' className='btn btn-primary w-100 mb-1' style={{background: '#4361EE'}}>SIMPAN</button>
@@ -179,7 +181,7 @@ const EditProfileMusisi = () => {
               <Form.Group className="mb-3 mt-4 position-relative">
                 <Form.Label>Password</Form.Label>
                 <Form.Control 
-                  style={{border:'2px solid #ECECEC', borderRadius:'8px', maxWidth:'640px', height:'48px'}} 
+                  style={{border:'2px solid #ECECEC', borderRadius:'8px',  height:'48px'}} 
                   id="password"
                   type="password" 
                   name="password"

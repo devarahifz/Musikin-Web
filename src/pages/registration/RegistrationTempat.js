@@ -59,9 +59,10 @@ const RegistrationTempat = () => {
     const card = {
         border: "2px solid #ECECEC",
         borderRadius: "12px",
-        padding: "3rem 4rem",
+        padding: "3rem 3rem",
         margin: "5rem auto",
-        width: "30%",
+        minWidth :"300px",
+        maxWidth:"30%",
         textAlign: 'center'
     }
     const input = {
@@ -70,7 +71,7 @@ const RegistrationTempat = () => {
     return (
         <>
         <NavbarLanding />
-            <div style={card}>
+            <div className="container w-full"style={card}>
                 <img src={logo} alt="logo" />
                 <p style={{fontSize: '1.5rem', margin: '1rem 0 2rem'}}>Daftar akun sebagai <b>pemilik tempat</b></p>
                 <Form onSubmit={onSubmit}>

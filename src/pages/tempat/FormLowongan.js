@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Button, Form, InputGroup } from 'react-bootstrap'
 import Layout from '../../components/layout/LayoutTempat'
 import { createGig, reset } from '../../features/gig/GigSlice'
+import './responsive.css'
 
 const FormLowongan = () => {
     const [formData, setFormData] = useState({
@@ -64,6 +65,7 @@ const FormLowongan = () => {
             border: "2px solid #ECECEC"
         },
         form : {
+            minWidth:"300px",
             width: "50%",
             margin: "2rem auto"
         }
@@ -73,7 +75,7 @@ const FormLowongan = () => {
         <>
         <Layout>
             <Container className='my-5'>
-            <h1 style={{fontSize: '3rem', fontWeight: 'bold', textAlign: 'center',  margin: '5rem 0 1rem'}}>Buat Lowongan</h1>
+            <h1 className="title"style={{fontSize: '3rem', fontWeight: 'bold', textAlign: 'center',  margin: '5rem 0 1rem'}}>Buat Lowongan</h1>
             
             <Form onSubmit={onSubmit} style={Style.form}>
                 <Form.Group className="mb-3">
@@ -131,8 +133,8 @@ const FormLowongan = () => {
                     style={Style.input} />
                 </Form.Group>
                 
-                <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>BUAT LOWONGAN</Button>
-                <Button href='/lowongan' className='py-3 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
+                <Button type='submit' className='py-2 w-100' style={{background: '#4361EE', fontWeight: '500'}}>BUAT LOWONGAN</Button>
+                <Button href='/lowongan' className='py-2 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
             </Form>
 
             </Container>

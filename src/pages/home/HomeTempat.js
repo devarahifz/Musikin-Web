@@ -35,10 +35,11 @@ const HomeTempat = () => {
     border: '2px solid rgba(236, 236, 236, 1)',
     borderRadius: '12px',
     width: '22rem',
+    height:'10rem',
     padding: '0.8rem',
-    display: 'inline-block',
+    display: 'inline-flex',
     textAlign: 'left',
-    margin: '2rem',
+    margin: '1rem',
   }
   const button = {
     background: 'none',
@@ -54,12 +55,14 @@ const HomeTempat = () => {
   return (
     <>
       <Layout>
-        <Container className='text-center my-5'>
+        <Container className='text-center my-5'style={{maxHeight: "100vh"}}>
           <h1 style={{fontSize: '3rem', fontWeight: 'bold', margin: '5rem 0 1rem'}}>Lowonganmu</h1>
-
           {/* card 1 */}
+          <div className='row d-flex'>
+            <div className='col align-self-end'>
           {gig?.gig?.map((gig, id) => (
-            <Card style={card} key={id}>
+          <>
+            <Card className='w-full' style={card} key={id}>
             <Card.Body>
               <Row>
                 <Col>
@@ -84,18 +87,24 @@ const HomeTempat = () => {
 
               <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiLocationMarker style={{fontSize: "0.8rem"}} /> {gig.location}</Card.Subtitle>
               <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><BiDollar style={{fontSize: "0.8rem"}} /> {gig.fee}</Card.Subtitle>
-              <Card.Text style={{fontSize: '0.7rem', marginTop: '1rem'}}>
-                {gig.description}
+              <Card.Text style={{fontSize: '0.7rem'}}>
+              {gig.description.length > 150
+                ? gig.description.substring(0,120) + "..."
+                : gig.description
+                }
               </Card.Text>
             </Card.Body>
           </Card>
+          </>
           ))}
-
-          <Button style={button} href='/lowongan/buat-lowongan'>
+            </div>
+          </div>
+          <div className='container mx-auto mt-3'>
+          <Button className='mx-auto' style={button} href='/lowongan/buat-lowongan'>
             <BsPlusLg className='opacity-75' style={{display: 'block', margin: '0 auto', fontSize: '3.5rem', marginBottom: '1.5rem'}} />
             <p className='m-0 opacity-75'>Tambah Lowongan</p>
           </Button>
-          
+          </div>
         </Container>
       </Layout>
     </>
