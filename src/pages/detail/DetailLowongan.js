@@ -10,6 +10,8 @@ import { useParams } from 'react-router-dom';
 import { Button, Modal, Form } from "react-bootstrap";
 import { createApplication, reset } from '../../features/application/ApplicationSlice';
 import Layout from '../../components/layout/LayoutMusisi'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DetailLowongan = () => {
     const { gig } = useSelector((state) => state.gig)
@@ -56,6 +58,40 @@ const DetailLowongan = () => {
         const formData = { gig_id, user_id, performer_name, portofolio_link, status }
 
         dispatch(createApplication(formData))
+        if (performer_name === "" || portofolio_link === "") {
+            toast.error('Harap masukkan Nama dan Link Portofolio', { 
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            icon: false,
+        });
+        setFormData({
+            performer_name: "",
+            portofolio_link: "",
+        })
+        } else {
+            toast.success('Berhasil mengirim lamaran', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                icon: false,
+            });
+            setFormData({
+                performer_name: "",
+                portofolio_link: "",
+            })
+        }
+        setShow(false)
         // dispatch(reset())
         // window.location.href = '/lowongan'
     }
