@@ -21,15 +21,17 @@ const Pelamar = () => {
     const handleAccept = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'accepted'}}))
-            await dispatch(getAllApplicationsByGigId(id))
+            await window.location.reload()
         })()
+        // dispatch(getAllApplicationsByGigId(id))
     }
 
     const handleReject = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'rejected'}}))
-            await dispatch(getAllApplicationsByGigId(id))
+            await window.location.reload()
         })()
+        // dispatch(getAllApplicationsByGigId(id))
     }
     
     const card = {
@@ -63,7 +65,9 @@ const Pelamar = () => {
                             <img src={application?.user?.user_photo} className="mx-auto d-block" style={{width:'60px',height:'60px', borderRadius:'999px', objectFit:'cover', objectPosition:'center'}} alt="profil" />
                         </Col>
                         <Col sm={9}>
-                            <Card.Title style={{fontWeight: 'bold'}}>{application.performer_name}</Card.Title>
+                            <a href={`/daftar-pelamar/profile-pelamar/${application?.user_id}`}>
+                                <Card.Title style={{fontWeight: 'bold'}}>{application.performer_name}</Card.Title>
+                            </a>
                             <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiPhone style={{fontSize: "0.8rem"}} /> {application?.user?.user_phone}</Card.Subtitle>
                         </Col>
                     </Row>

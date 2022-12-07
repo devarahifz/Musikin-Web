@@ -23,6 +23,7 @@ import ProfileTempat from "./pages/profile/ProfileTempat";
 import ConfirmationMusisiReg from "./pages/confirmation/confirmation_reg_musisi";
 import LoginAdmin from "./pages/admin/LoginAdmin";
 import HomeAdmin from "./pages/admin/HomeAdmin";
+import ProfilePelamar from "./pages/tempat/ProfilePelamar";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
       <Route path="/profile/edit/:id" element={<EditProfileMusisi/>}/>
       <Route path="/lowongan" element={<HomeTempat />} />
       <Route path="/daftar-pelamar/:id" element={<Pelamar />} />
+      <Route path="/daftar-pelamar/profile-pelamar/:id" element={<ProfilePelamar />} />
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
       <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
       <Route path="/profile-owner/:id" element={<ProfileTempat />} />

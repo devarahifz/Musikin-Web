@@ -18,6 +18,7 @@ const EditProfileMusisi = () => {
     user_email: "",
     user_phone: "",
     user_photo: "",
+    user_description: "",
   })
 
   const [formDataPassword, setFormDataPassword] = useState({
@@ -36,6 +37,7 @@ const EditProfileMusisi = () => {
         user_name: data.payload.user.user_name,
         user_email: data.payload.user.user_email,
         user_phone: data.payload.user.user_phone,
+        user_description: data.payload.user.user_description,
       })
 
       setFormDataPassword({
@@ -55,6 +57,7 @@ const EditProfileMusisi = () => {
       form.append("user_email", formData.user_email)
       form.append("user_photo", formData.user_photo)
       form.append("user_phone", formData.user_phone)
+      form.append("user_description", formData.user_description)
       
       await dispatch(updateUser({id, user: form}))
       dispatch(reset())
@@ -212,7 +215,9 @@ const EditProfileMusisi = () => {
             className='w-100  p-2 mb-3' 
             rows="4" 
             style={{border:'2px solid #ECECEC', borderRadius:'8px'}} 
-            value="Lorem Ipsum"
+            name="user_description"
+            value={formData.user_description}
+            onChange={onChange}
           />
           <button type='submit' className='btn btn-primary w-100 mb-1' style={{background: '#4361EE'}}>SIMPAN</button>
           <a href={`/profile/${id}`} className='btn btn-light w-100' style={{backgroundColor: '#ECECEC', color: '#4361EE'}}>KEMBALI</a>

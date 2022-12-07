@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "./AuthService";
+import AdminService from "./AdminService";
 
 // Get admin from local storage
 const admin = JSON.parse(localStorage.getItem("admin"));
@@ -13,10 +13,10 @@ const initialState = {
 
 // Register admin
 export const register = createAsyncThunk(
-  "auth/register",
+  "admin/register",
   async (admin, { rejectWithValue }) => {
     try {
-      const response = await AuthService.register(admin);
+      const response = await AdminService.register(admin);
       return response;
     } catch (error) {
       return rejectWithValue(error.response.admin);
@@ -26,10 +26,10 @@ export const register = createAsyncThunk(
 
 // Login admin
 export const login = createAsyncThunk(
-  "auth/login",
+  "admin/login",
   async (admin, { rejectWithValue }) => {
     try {
-      const response = await AuthService.login(admin);
+      const response = await AdminService.login(admin);
       return response;
     } catch (error) {
       return rejectWithValue(error.response.admin);
@@ -39,10 +39,10 @@ export const login = createAsyncThunk(
 
 // Logout admin
 export const logout = createAsyncThunk(
-  "auth/logout",
+  "admin/logout",
   async (admin, { rejectWithValue }) => {
     try {
-      const response = await AuthService.logout(admin);
+      const response = await AdminService.logout(admin);
       return response;
     } catch (error) {
       return rejectWithValue(error.response.admin);
@@ -50,9 +50,31 @@ export const logout = createAsyncThunk(
   }
 );
 
-// Auth slice
-const authSlice = createSlice({
-  name: "auth",
+// Get all users
+export const getAllUsers = createAsyncThunk(
+  "admin/getAllUsers",
+  async (thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().admin?.admin?.token;
+      const response = await AdminService.getAllUsers(token);
+      return response;
+    } catch (error) {
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+        return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
+// Admin slice
+const adminSlice = createSlice({
+  name: "admin",
   initialState,
   reducers: {
     reset: (state) => {
@@ -99,8 +121,21 @@ const authSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     });
+
+    // Get all users
+    builder.addCase(getAllUsers.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(getAllUsers.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.admin = action.payload;
+    });
+    builder.addCase(getAllUsers.rejected, (state, action) => {
+      state.status = "failed";
+      state.error = action.payload;
+    });
   }
 });
 
-export const { reset } = authSlice.actions;
-export default authSlice.reducer;
+export const { reset } = adminSlice.actions;
+export default adminSlice.reducer;

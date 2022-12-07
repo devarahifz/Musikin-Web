@@ -28,10 +28,23 @@ const logout = () => {
     localStorage.removeItem('admin');
 }
 
-const AuthService = {
+// Get all users
+const getAllUsers = async (token) => {
+  const response = await axios.get(`${API_URL}/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return response.data;
+}
+
+
+const AdminService = {
   register,
   login,
   logout,
+  getAllUsers
 };
 
-export default AuthService;
+export default AdminService;

@@ -46,13 +46,13 @@ const NavbarMusisi = (props) => {
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
                 <Nav >
                     <Nav.Link href="/home-musisi" className="me-3" style={font}>
-                        DAFTAR
+                        CARI
                     </Nav.Link>
                     <Nav.Link href={`/riwayat/${id}`} className="me-3" style={font}>
                         RIWAYAT
                     </Nav.Link>
                     <Nav.Link href={`/profile/${id}`} className="me-3" style={font}>
-                        PROFILE
+                        PROFIL
                     </Nav.Link>
                 </Nav>
                 </Container>

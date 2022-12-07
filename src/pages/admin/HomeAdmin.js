@@ -1,15 +1,20 @@
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import logo from '../../assets/images/Musikin Logo Login.png'
-import { logout, reset } from "../../features/admin/AuthSlice";
-import { useDispatch } from 'react-redux';
+import { logout, getAllUsers, reset } from "../../features/admin/AdminSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 const Dashboard = () => {
     const [toggleState, setToggleState] = useState(1);
+    const { admin } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     const toggleTab = (index) => {
         setToggleState(index);
     };
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, [dispatch]);
 
     const onLogout = () => {
         dispatch(logout());
@@ -66,20 +71,23 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Muhammad Tulus</td>
-                            <td>tulusm@gmail.com</td>
-                            <td>08378462465</td>
-                            <td><div> <button className='btn btn-primary btn-small'>LINK PROFIL</button> </div></td>
-                            <td>
-                                <div className='row d-flex mx-5'>
-                                    <button className='col me-1 btn btn-warning w-50'>UBAH</button>
-                                    <button className='col ms-1 btn btn-danger w-50'>HAPUS</button>
-                                </div>
-                            </td>
-                            </tr>
-                            <tr>
+                            {admin?.admin?.map((user, index) => (
+                                <tr key={index}>
+                                <th scope="row">{index++}</th>
+                                <td>{user.user_name}</td>
+                                <td>{user.user_email}</td>
+                                <td>{user.user_phone}</td>
+                                <td><div> <button href={user.user_photo} className='btn btn-primary btn-small'>LINK FOTO</button> </div></td>
+                                <td>
+                                    <div className='row d-flex mx-5'>
+                                        <button className='col me-1 btn btn-warning w-50'>UBAH</button>
+                                        <button className='col ms-1 btn btn-danger w-50'>HAPUS</button>
+                                    </div>
+                                </td>
+                                </tr>
+                            ))}
+
+                            {/* <tr>
                             <th scope="row">2</th>
                             <td>Muhammad Tulus</td>
                             <td>tulusm@gmail.com</td>
@@ -104,7 +112,7 @@ const Dashboard = () => {
                                     <button className='col ms-1 btn btn-danger w-50'>HAPUS</button>
                                 </div>
                             </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                     </div>
