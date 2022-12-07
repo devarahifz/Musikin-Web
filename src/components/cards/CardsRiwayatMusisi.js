@@ -3,7 +3,7 @@ import { FaMapMarkerAlt,FaDollarSign,FaArrowRight } from "react-icons/fa"
 import './responsivetext.css'
 const CardsRiwayatMusisi = (props) => {
     
-    const { createdAt, status, id } = props
+    const { title, location, fee, createdAt, status, id } = props
     const style = {
         applied : {
             background: '#FFF9F2',
@@ -26,11 +26,11 @@ const CardsRiwayatMusisi = (props) => {
     <div className="card-body ">
         <div className='row align-middle justify-content'>
             <div className='col-12 col-sm ms-0 ms-sm-3 text-center text-sm-start'>
-                <h5 className="card-title fw-bold mt-3 ">Starbucks</h5>
-                <p className="card-subtitle mb-2" style={{fontSize: '10px'}}><FaMapMarkerAlt/>Mall Kelapa Gading,Jakarta Timur</p>
+                <h5 className="card-title fw-bold mt-3 ">{title}</h5>
+                <p className="card-subtitle mb-2" style={{fontSize: '10px'}}><FaMapMarkerAlt/>{location}</p>
             </div>
             <div className='col-6 col-sm text-center'>
-                <p className="card-subtitle mt-4 texts"><FaDollarSign/>Rp 500.000</p>
+                <p className="card-subtitle mt-4 texts p-0"><FaDollarSign/> Rp {fee !== null ? fee : '-'},00</p>
             </div>
             <div className='col-6 col-sm text-center'>
                 <p className=' mt-4 texts'>{createdAt}</p>

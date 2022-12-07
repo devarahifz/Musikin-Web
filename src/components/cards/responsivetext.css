@@ -1,5 +1,6 @@
 @media (max-width: 500px) {
     .texts {
         font-size: 10px !important;
+        padding: 0 !important;
     }
 }

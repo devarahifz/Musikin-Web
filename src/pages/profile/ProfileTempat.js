@@ -7,6 +7,8 @@ import { updateOwner, updateOwnerPassword, reset, getOwnerById } from '../../fea
 import { useParams } from 'react-router-dom'
 import { AiFillEyeInvisible } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './responsive.css'
 
 const ProfileTempat = () => {
@@ -45,25 +47,61 @@ const ProfileTempat = () => {
     }, [])
 
     const onSubmit = (e) => {
-        e.preventDefault()
-
-        const form = new FormData()
-        form.append("owner_name", formData.owner_name)
-        form.append("owner_email", formData.owner_email)
-        form.append("owner_photo", formData.owner_photo)
-
-        dispatch(updateOwner({id, owner: form}))
-        dispatch(reset())  
-
-        window.location.href = '/lowongan'
+        (async () => {
+            e.preventDefault()
+            
+            const form = new FormData()
+            form.append("owner_name", formData.owner_name)
+            form.append("owner_email", formData.owner_email)
+            form.append("owner_photo", formData.owner_photo)
+            
+            dispatch(updateOwner({id, owner: form}))
+            dispatch(reset())  
+            
+            window.location.href = '/lowongan'
+        })()
     }
 
     const onSubmitPassword = (e) => {
         (async () => {
             e.preventDefault()
-            await dispatch(updateOwnerPassword({id, owner: formDataPassword}))
-            window.location.href = `/profile-owner/${id}`
+            if (formDataPassword.password === "" || formDataPassword.verifyPassword === "" || formDataPassword.password !== formDataPassword.verifyPassword) {
+                toast.error('Pastikan Password Anda sudah sesuai', { 
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    icon: false,
+                });
+                setFormDataPassword({
+                    password: "",
+                    verifyPassword: "",
+                })
+            } else {
+                await dispatch(updateOwnerPassword({id, owner: formDataPassword}))
+                toast.success('Ganti Password Berhasil', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    icon: false,
+                });
+                setFormDataPassword({
+                    password: "",
+                    verifyPassword: "",
+                })
+            }
         })()
+        setShow(false)
+        // window.location.href = `/profile-owner/${id}`
     }
 
     const onChange = (e) => {

@@ -12,6 +12,7 @@ import './responsive.css'
 
 const EditProfileMusisi = () => {
   const { user } = useSelector((state) => state.authUser)
+  const [imagePreview, setImagePreview] = useState(null)
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -65,7 +66,6 @@ const EditProfileMusisi = () => {
   const onSubmitPassword = (e) => {
     (async () => {
       e.preventDefault()
-      await dispatch(updateUserPassword({id, user: formDataPassword}))
       if (formDataPassword.password === "" || formDataPassword.verifyPassword === "" || formDataPassword.password !== formDataPassword.verifyPassword) {
         toast.error('Pastikan Password Anda sudah sesuai', { 
           position: "top-right",
@@ -83,6 +83,7 @@ const EditProfileMusisi = () => {
           verifyPassword: "",
         })
       } else {
+        await dispatch(updateUserPassword({id, user: formDataPassword}))
         toast.success('Ganti Password Berhasil', {
           position: "top-right",
           autoClose: 2000,
@@ -120,6 +121,7 @@ const EditProfileMusisi = () => {
       ...prevState,
       [e.target.name]: e.target.files[0],
     }))
+    setImagePreview(URL.createObjectURL(e.target.files[0]))
   }
 
   const handleShowPassword = () => {
@@ -158,7 +160,13 @@ const EditProfileMusisi = () => {
           <p> Foto Profil </p>
           <div className='row mx-auto'>
             <div className='col-12 col-md-4'>
-            <img src={user?.user?.user_photo} className="mb-3" style={{width:'200px',height:'200px', borderRadius:'999px', objectFit:'cover', objectPosition:'center'}} alt={formData.user_name}></img>
+            {
+              imagePreview 
+              ?
+              <img src={imagePreview} className="mb-3" style={{width:'200px',height:'200px', borderRadius:'999px', objectFit:'cover', objectPosition:'center'}} alt={formData.user_name}></img>
+              :
+              <img src={user?.user?.user_photo} className="mb-3" style={{width:'200px',height:'200px', borderRadius:'999px', objectFit:'cover', objectPosition:'center'}} alt={formData.user_name}></img>
+            }
             </div>
             <div className='col mt-5'>
               <input 

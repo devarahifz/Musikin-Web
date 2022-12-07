@@ -47,7 +47,7 @@ const LoginMusisi = () => {
             password: password
         }
         dispatch(login(data));
-        if (email === "" || password === "" || status === "failed" || error === "Unauthorized") {
+        if (email === "" || password === "" ||  status === "failed") {
             toast.error('Email atau Password salah', { 
                 position: "top-right",
                 autoClose: 2000,
@@ -60,6 +60,8 @@ const LoginMusisi = () => {
                 icon: false,
             });
         }
+        
+        // console.log(error.message)
     };
 
     const handleShowPassword = () => {

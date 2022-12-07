@@ -27,6 +27,9 @@ const Riwayat = () => {
             <CardsRiwayatMusisi
               key={application?.id}
               id={application?.gig_id}
+              title={application?.gig?.title}
+              location={application?.gig?.location}
+              fee={application?.gig?.fee}
               createdAt={application?.createdAt}
               status={application?.status}
             />

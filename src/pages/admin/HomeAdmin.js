@@ -1,13 +1,21 @@
 import React , { useState } from 'react'
 import logo from '../../assets/images/Musikin Logo Login.png'
-
+import { logout, reset } from "../../features/admin/AuthSlice";
+import { useDispatch } from 'react-redux';
 
 const Dashboard = () => {
     const [toggleState, setToggleState] = useState(1);
+    const dispatch = useDispatch();
 
     const toggleTab = (index) => {
         setToggleState(index);
-      };
+    };
+
+    const onLogout = () => {
+        dispatch(logout());
+        dispatch(reset());
+        window.location.href = "/admin";
+    };
   return (
     <>
         <div className='row'>
@@ -38,7 +46,7 @@ const Dashboard = () => {
                             onClick={() => toggleTab(3)}>Lowongan</button>
                         </div>
                     </div>
-                    <div className='btn btn-danger mt-5 ms-2'>Keluar</div>
+                    <button onClick={onLogout} className='btn btn-danger mt-5 ms-2'>Keluar</button>
                 </div>
             </div>
             <div className='col pt-4'>
