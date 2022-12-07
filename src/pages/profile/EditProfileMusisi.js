@@ -46,18 +46,20 @@ const EditProfileMusisi = () => {
   }, [])
 
   const onSubmit = (e) => {
-    e.preventDefault()
-
-    const form = new FormData()
-    form.append("user_name", formData.user_name)
-    form.append("user_email", formData.user_email)
-    form.append("user_photo", formData.user_photo)
-    form.append("user_phone", formData.user_phone)
-
-    dispatch(updateUser({id, user: form}))
-    dispatch(reset())
-
-    window.location.href = `/profile/${id}`
+    (async () => {
+      e.preventDefault()
+      
+      const form = new FormData()
+      form.append("user_name", formData.user_name)
+      form.append("user_email", formData.user_email)
+      form.append("user_photo", formData.user_photo)
+      form.append("user_phone", formData.user_phone)
+      
+      await dispatch(updateUser({id, user: form}))
+      dispatch(reset())
+      
+      window.location.href = `/profile/${id}`
+    })()
   }
 
   const onSubmitPassword = (e) => {
