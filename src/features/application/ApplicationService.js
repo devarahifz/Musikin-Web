@@ -79,6 +79,17 @@ const getAllApplicationsByUserId = async (id, token) => {
   return response.data;
 }
 
+// Get all applications by gig id
+const getAllApplicationsByGigId = async (id, token) => {
+  const response = await axios.get(`${API_URL}/application/gig/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return response.data;
+}
+
 const ApplicationService = {
   createApplication,
   getAllApplications,
@@ -86,7 +97,8 @@ const ApplicationService = {
   updateApplication,
   updateApplicationStatus,
   deleteApplication,
-  getAllApplicationsByUserId
+  getAllApplicationsByUserId,
+  getAllApplicationsByGigId
 };
 
 export default ApplicationService;

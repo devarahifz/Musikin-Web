@@ -4,32 +4,31 @@ import { Card, Row, Col, Container, Button } from 'react-bootstrap'
 import { HiPhone } from 'react-icons/hi'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllApplications, updateApplicationStatus } from '../../features/application/ApplicationSlice'
-import { getUserById } from '../../features/user/AuthSlice'
+import { updateApplicationStatus, getAllApplicationsByGigId } from '../../features/application/ApplicationSlice'
+import { useParams } from 'react-router-dom'
 
 const Pelamar = () => {
     const { application } = useSelector((state) => state.application)
-    const { user } = useSelector((state) => state.authUser)
     const dispatch = useDispatch()
+    const { id } = useParams()
 
     useEffect(() => {
         (async () => {
-        await dispatch(getAllApplications())
-        await dispatch(getUserById(user.data.id))
+        await dispatch(getAllApplicationsByGigId(id))
     })()
     }, [dispatch])
 
     const handleAccept = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'accepted'}}))
-            await dispatch(getAllApplications())
+            await dispatch(getAllApplicationsByGigId(id))
         })()
     }
 
     const handleReject = (id) => {
         (async () => {
             await dispatch(updateApplicationStatus({id, application: {status: 'rejected'}}))
-            await dispatch(getAllApplications())
+            await dispatch(getAllApplicationsByGigId(id))
         })()
     }
     
@@ -56,7 +55,7 @@ const Pelamar = () => {
                     <Col></Col>
                 </Row>
 
-                {application?.gigs?.map((application, id) => (
+                {application?.applications?.map((application, id) => (
                 <Card style={card} key={id}>
                     <Card.Body>
                     <Row style={{alignItems:'center'}}>

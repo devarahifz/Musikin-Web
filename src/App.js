@@ -44,7 +44,7 @@ function App() {
       <Route path="/profile/:id" element={<ProfileMusisi/>}/>
       <Route path="/profile/edit/:id" element={<EditProfileMusisi/>}/>
       <Route path="/lowongan" element={<HomeTempat />} />
-      <Route path="/daftar-pelamar" element={<Pelamar />} />
+      <Route path="/daftar-pelamar/:id" element={<Pelamar />} />
       <Route path="/lowongan/buat-lowongan" element={<FormLowongan />} />
       <Route path="/lowongan/edit-lowongan/:id" element={<EditLowongan />} />
       <Route path="/profile-owner/:id" element={<ProfileTempat />} />

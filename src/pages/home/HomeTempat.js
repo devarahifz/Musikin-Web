@@ -66,7 +66,7 @@ const HomeTempat = () => {
             <Card.Body>
               <Row>
                 <Col>
-                <a href='/daftar-pelamar' style={{color: 'black', textDecoration: 'none'}}>
+                <a href={`/daftar-pelamar/${gig.id}`} style={{color: 'black', textDecoration: 'none'}}>
                   <Card.Title style={{fontWeight: 'bold'}}>{gig.title}</Card.Title>
                 </a>
                 </Col>

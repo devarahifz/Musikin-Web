@@ -147,10 +147,29 @@ export const getAllApplicationsByUserId = createAsyncThunk(
     async (id, { rejectWithValue }) => {
     try {
       const token = JSON.parse(localStorage.getItem("user")).data.token;
-      // const id = JSON.parse(localStorage.getItem("user")).data.id;
-      console.log(token)
-      console.log(id)
       const response = await ApplicationService.getAllApplicationsByUserId(id, token);
+      return response;
+    } catch (error) {
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+        error.message ||
+        error.toString();
+        
+        return rejectWithValue(message);
+      }
+  }
+);
+
+// Get all applications by gig id
+export const getAllApplicationsByGigId = createAsyncThunk(
+  "application/getAllApplicationsByGigId",
+    async (id, { rejectWithValue }) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("owner")).data.token;
+      const response = await ApplicationService.getAllApplicationsByGigId(id, token);
+
       return response;
     } catch (error) {
       const message =
@@ -266,6 +285,19 @@ const applicationSlice = createSlice({
         state.application = action.payload;
       })
       .addCase(getAllApplicationsByUserId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAllApplicationsByGigId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllApplicationsByGigId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.application = action.payload;
+      })
+      .addCase(getAllApplicationsByGigId.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
