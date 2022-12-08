@@ -130,12 +130,12 @@ const DetailLowongan = () => {
         </div>
 
         <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header closeButton>
-                <Modal.Title style={{fontSize: '20px', textAlign: 'center'}}>Kamu akan melamar ke <b>{gig?.gig?.title}</b> di <b>{gig?.gig?.location}</b></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className='p-5'>
+                <div style={{textAlign: 'center'}}>
+                    <Modal.Title style={{fontSize: '20px', textAlign: 'center'}}>Kamu akan melamar ke <b>{gig?.gig?.title}</b> di <b>{gig?.gig?.location}</b></Modal.Title>
+                </div>
                 <Form onSubmit={onSubmit}>
-                    <Form.Group className="mb-3"
+                    <Form.Group className="mb-3 mt-5"
                     >
                         <Form.Label>Nama</Form.Label>
                         <Form.Control 
@@ -155,16 +155,18 @@ const DetailLowongan = () => {
                         onChange={onChange}
                         />
                     </Form.Group>
-                <Button variant="primary" type="submit" >
-                    Submit
-                </Button>
+                    <div className='text-center mt-5'>
+                        <Button variant="primary" type="submit" className='w-100' style={{background: '#4361EE'}} >
+                            SIMPAN
+                        </Button>
+                    </div>
                 </Form>
+                <div className='text-center mt-2'>
+                    <Button onClick={handleClose} className='w-100 btn-light' style={{background: '#ECECEC', color: '#4361EE'}}>
+                        BATAL
+                    </Button>
+                </div>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
         </Modal>
         </Layout>
     </>

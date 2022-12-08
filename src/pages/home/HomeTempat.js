@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout/LayoutTempat'
-import { Container, Card, Dropdown, Row, Col, DropdownButton, Button } from 'react-bootstrap'
+import { Container, Card, Dropdown, Row, Col, DropdownButton, Button, Modal } from 'react-bootstrap'
 import { BiDollar } from 'react-icons/bi'
 import { BsThreeDotsVertical, BsPlusLg } from 'react-icons/bs'
 import { HiLocationMarker } from 'react-icons/hi'
@@ -30,6 +30,10 @@ const HomeTempat = () => {
     window.location.reload()
     await dispatch(getAllGigs())
   }
+
+  const [showAlert, setShowAlert] = useState(false);
+  const handleCloseAlert = () => setShowAlert(false);
+  const handleShowAlert = () => setShowAlert(true);
   
   const card = {
     border: '2px solid rgba(236, 236, 236, 1)',
@@ -60,43 +64,57 @@ const HomeTempat = () => {
           {/* card 1 */}
           <div className='row d-flex'>
             <div className='col align-self-end'>
-          {gig?.gig?.map((gig, id) => (
-          <>
-            <Card className='w-full' style={card} key={id}>
-            <Card.Body>
-              <Row>
-                <Col>
-                <a href={`/daftar-pelamar/${gig.id}`} style={{color: 'black', textDecoration: 'none'}}>
-                  <Card.Title style={{fontWeight: 'bold'}}>{gig.title}</Card.Title>
-                </a>
-                </Col>
-                <Col className='text-end'>
-                  <DropdownButton 
-                    key='end'
-                    id='dropdown-button-drop-end'
-                    drop='end' 
-                    title={<BsThreeDotsVertical style={{color: 'grey'}} />}
-                    >
-                    <Dropdown.Item href={`/lowongan/edit-lowongan/${gig.id}`}>
-                        Ubah
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleDelete(gig.id)}>Hapus</Dropdown.Item>
-                  </DropdownButton>
-                </Col>
-              </Row>
+              {gig?.gig?.map((gig, id) => (
+              <>
+                <Card className='w-full' style={card} key={id}>
+                  <Card.Body>
+                    <Row>
+                      <Col>
+                      <a href={`/daftar-pelamar/${gig.id}`} style={{color: 'black', textDecoration: 'none'}}>
+                        <Card.Title style={{fontWeight: 'bold'}}>{gig.title}</Card.Title>
+                      </a>
+                      </Col>
+                      <Col className='text-end'>
+                        <DropdownButton 
+                          key='end'
+                          id='dropdown-button-drop-end'
+                          drop='end' 
+                          title={<BsThreeDotsVertical style={{color: 'grey'}} />}
+                          >
+                          <Dropdown.Item href={`/lowongan/edit-lowongan/${gig.id}`}>
+                              Ubah
+                          </Dropdown.Item>
+                          <Dropdown.Item onClick={handleShowAlert}>Hapus</Dropdown.Item>
+                        </DropdownButton>
+                      </Col>
+                    </Row>
 
-              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiLocationMarker style={{fontSize: "0.8rem"}} /> {gig.location}</Card.Subtitle>
-              <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><BiDollar style={{fontSize: "0.8rem"}} /> {gig.fee}</Card.Subtitle>
-              <Card.Text style={{fontSize: '0.7rem'}}>
-              {gig.description.length > 150
-                ? gig.description.substring(0,120) + "..."
-                : gig.description
-                }
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          </>
-          ))}
+                    <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><HiLocationMarker style={{fontSize: "0.8rem"}} /> {gig.location}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2" style={{fontSize: '0.7rem'}}><BiDollar style={{fontSize: "0.8rem"}} /> {gig.fee}</Card.Subtitle>
+                    <Card.Text style={{fontSize: '0.7rem'}}>
+                    {gig.description.length > 150
+                      ? gig.description.substring(0,120) + "..."
+                      : gig.description
+                      }
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+
+                <Modal show={showAlert} onHide={handleCloseAlert} backdrop="static" keyboard={false} style={{width: '20%', margin: '0 40%'}} >
+                  <Modal.Body className='py-5 text-center'>
+                    <div className='mb-3'>
+                      <Modal.Title>Anda yakin menghapus lowongan <b>{gig.title}?</b></Modal.Title>
+                    </div>
+                    <Button onClick={() => handleDelete(gig.id)} variant="danger" type="submit" className='me-2' style={{width: '35%'}} >
+                      YAKIN
+                    </Button>
+                    <Button onClick={handleCloseAlert} variant="primary" type="submit" className='ms-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '35%'}} >
+                      BATAL
+                    </Button>
+                  </Modal.Body>
+                </Modal>
+              </>
+              ))}
             </div>
           </div>
           <div className='container mx-auto mt-3'>
@@ -106,6 +124,7 @@ const HomeTempat = () => {
           </Button>
           </div>
         </Container>
+
       </Layout>
     </>
   )

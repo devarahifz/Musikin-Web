@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Button, Form, InputGroup } from 'react-bootstrap'
+import { Container, Button, Form, InputGroup, Modal } from 'react-bootstrap'
 import Layout from '../../components/layout/LayoutTempat'
 import { createGig, reset } from '../../features/gig/GigSlice'
 import './responsive.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormLowongan = () => {
     const [formData, setFormData] = useState({
@@ -36,10 +38,25 @@ const FormLowongan = () => {
             form.append("fee", formData.fee);
             form.append("description", formData.description);
             console.log(formData)
+
+            if (formData.title === "" || formData.location === "" || formData.fee === "" || formData.description === "" || formData.location_photo === "") {
+                toast.error('Harap isi semua field', { 
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                icon: false,
+                });
+            } else {
+                await dispatch(createGig(form))
+                dispatch(reset())
+                window.location.href = '/lowongan'
+            }
     
-            await dispatch(createGig(form))
-            dispatch(reset())
-            window.location.href = '/lowongan'
         })
         ()
 
@@ -59,6 +76,10 @@ const FormLowongan = () => {
         }))
         setImagePreview(URL.createObjectURL(e.target.files[0]))
     }
+
+    const [showAlert, setShowAlert] = useState(false);
+    const handleCloseAlert = () => setShowAlert(false);
+    const handleShowAlert = () => setShowAlert(true);
 
     const Style = {
         input : {
@@ -134,10 +155,23 @@ const FormLowongan = () => {
                 </Form.Group>
                 
                 <Button type='submit' className='py-2 w-100' style={{background: '#4361EE', fontWeight: '500'}}>BUAT LOWONGAN</Button>
-                <Button href='/lowongan' className='py-2 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
+                <Button onClick={handleShowAlert} className='py-2 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
             </Form>
 
             </Container>
+            <Modal show={showAlert} onHide={handleCloseAlert} backdrop="static" keyboard={false} style={{width: '20%', margin: '0 40%'}} >
+                <Modal.Body className='py-5 text-center'>
+                    <div className='mb-3'>
+                        <Modal.Title>Data belum disimpan !</Modal.Title>
+                    </div>
+                    <Button onClick={handleCloseAlert} variant="primary" type="submit" className='me-2' style={{background: '#4361EE', width: '35%'}} >
+                        UBAH
+                    </Button>
+                    <Button href={`/lowongan`} variant="primary" type="submit" className='ms-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '35%'}} >
+                        BATAL
+                    </Button>
+                </Modal.Body>
+            </Modal>
         </Layout>
         </>
     )

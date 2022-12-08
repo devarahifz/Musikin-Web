@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout/LayoutTempat'
-import { Card, Row, Col, Container, Button } from 'react-bootstrap'
+import { Card, Row, Col, Container, Button, Modal } from 'react-bootstrap'
 import { HiPhone } from 'react-icons/hi'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
@@ -33,6 +33,14 @@ const Pelamar = () => {
         })()
         // dispatch(getAllApplicationsByGigId(id))
     }
+
+    const [showAccept, setShowAccept] = useState(false);
+    const handleCloseAccept = () => setShowAccept(false);
+    const handleShowAccept = () => setShowAccept(true);
+
+    const [showReject, setShowReject] = useState(false);
+    const handleCloseReject = () => setShowReject(false);
+    const handleShowReject = () => setShowReject(true);
     
     const card = {
         border: '2px solid rgba(236, 236, 236, 1)',
@@ -58,6 +66,7 @@ const Pelamar = () => {
                 </Row>
 
                 {application?.applications?.map((application, id) => (
+                <>
                 <Card style={card} key={id}>
                     <Card.Body>
                     <Row style={{alignItems:'center'}}>
@@ -86,16 +95,45 @@ const Pelamar = () => {
                             ) : (
                                 <Row style={{marginTop: '1rem'}}>
                                     <Col sm={6}>
-                                        <Button onClick={() => handleAccept(application?.id)} style={{background: '#4361EE', width: '100%'}} >TERIMA</Button>
+                                        <Button onClick={handleShowAccept} style={{background: '#4361EE', width: '100%'}} >TERIMA</Button>
                                     </Col>
                                     <Col sm={6}>
-                                        <Button onClick={() => handleReject(application?.id) } variant='danger' style={{width: '100%'}} >TOLAK</Button>
+                                        <Button onClick={handleShowReject} variant='danger' style={{width: '100%'}} >TOLAK</Button>
                                     </Col>
                                 </Row>
                             )}
                     </Card.Text>
                     </Card.Body>
                 </Card>
+
+                <Modal show={showAccept} onHide={handleCloseAccept} backdrop="static" keyboard={false} style={{width: '35%', margin: '0 35%'}} >
+                    <Modal.Body className='py-5 text-center'>
+                        <div className='mb-3'>
+                            <Modal.Title>Anda yakin menerima kandidat <b>{application.performer_name}?</b></Modal.Title>
+                        </div>
+                        <Button onClick={() => handleAccept(application?.id)} variant="primary" type="submit" className='me-2 py-2' style={{background: '#4361EE', width: '35%'}} >
+                            YAKIN
+                        </Button>
+                        <Button onClick={handleCloseAccept} variant="primary" type="submit" className='ms-2 py-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '35%'}} >
+                            BATAL
+                        </Button>
+                    </Modal.Body>
+                </Modal>
+
+                <Modal show={showReject} onHide={handleCloseReject} backdrop="static" keyboard={false} style={{width: '35%', margin: '0 35%'}} >
+                    <Modal.Body className='py-5 text-center'>
+                        <div className='mb-3'>
+                            <Modal.Title>Anda yakin menolak kandidat <b>{application.performer_name}?</b></Modal.Title>
+                        </div>
+                        <Button onClick={() => handleReject(application?.id)} variant="danger" type="submit" className='me-2 py-2' style={{width: '35%'}} >
+                            YAKIN
+                        </Button>
+                        <Button onClick={handleCloseReject} variant="primary" type="submit" className='ms-2 py-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '35%'}} >
+                            BATAL
+                        </Button>
+                    </Modal.Body>
+                </Modal>
+                </>
                 ))}
             </Container>
         </Layout>

@@ -143,6 +143,10 @@ const ProfileTempat = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [showAlert, setShowAlert] = useState(false);
+    const handleCloseAlert = () => setShowAlert(false);
+    const handleShowAlert = () => setShowAlert(true);
+
     const Style = {
         input : {
             border: "2px solid #ECECEC"
@@ -198,11 +202,25 @@ const ProfileTempat = () => {
                     />
                 </Form.Group>
                     <Button type='submit' className='py-2 my-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>SUBMIT</Button>
-                    <Button href='/lowongan' className='py-2 w-100' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
+                    <Button onClick={handleShowAlert} className='py-2 w-100' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
                 </Form>
             </Container>
 
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal show={showAlert} onHide={handleCloseAlert} backdrop="static" keyboard={false} style={{width: '20%', margin: '0 40%'}} >
+                <Modal.Body className='py-5 text-center'>
+                    <div className='mb-3'>
+                    <Modal.Title>Data belum disimpan !</Modal.Title>
+                    </div>
+                    <Button onClick={handleCloseAlert} variant="primary" type="submit" className='me-2' style={{background: '#4361EE', width: '30%'}} >
+                    UBAH
+                    </Button>
+                    <Button href={`/lowongan`} variant="primary" type="submit" className='ms-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '30%'}} >
+                    BATAL
+                    </Button>
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} centered>
                 <Modal.Body className='p-5'>
                     <div style={{textAlign: 'center', marginTop: '0px'}}>
                         <Modal.Title style={{fontSize: '36px', fontWeight: 'bold', width: '100%'}}>Ganti Password</Modal.Title>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Button, Form, InputGroup } from 'react-bootstrap'
+import { Container, Button, Form, InputGroup, Modal } from 'react-bootstrap'
 import Layout from '../../components/layout/LayoutTempat'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateGig, reset, getGigById } from '../../features/gig/GigSlice'
@@ -65,6 +65,10 @@ const FormLowongan = () => {
         }))
         setImagePreview(URL.createObjectURL(e.target.files[0]))
     }
+
+    const [showAlert, setShowAlert] = useState(false);
+    const handleCloseAlert = () => setShowAlert(false);
+    const handleShowAlert = () => setShowAlert(true);
 
     const Style = {
         input : {
@@ -139,10 +143,24 @@ const FormLowongan = () => {
                 </Form.Group>
                 
                 <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>EDIT LOWONGAN</Button>
-                <Button href='/lowongan' className='py-3 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
+                <Button onClick={handleShowAlert} className='py-3 w-100 my-3' style={{background: '#ECECEC', fontWeight: '500', border: 'none', color: '#4361EE'}}>KEMBALI</Button>
             </Form>
 
             </Container>
+
+            <Modal show={showAlert} onHide={handleCloseAlert} backdrop="static" keyboard={false} style={{width: '20%', margin: '0 40%'}} centered>
+                <Modal.Body className='py-5 text-center'>
+                    <div className='mb-3'>
+                        <Modal.Title>Data belum disimpan !</Modal.Title>
+                    </div>
+                    <Button onClick={handleCloseAlert} variant="primary" type="submit" className='me-2' style={{background: '#4361EE', width: '30%'}} >
+                        UBAH
+                    </Button>
+                    <Button href={`/lowongan`} variant="primary" type="submit" className='ms-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '30%'}} >
+                        BATAL
+                    </Button>
+                </Modal.Body>
+            </Modal>
         </Layout>
         </>
     )

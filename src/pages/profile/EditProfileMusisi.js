@@ -148,6 +148,10 @@ const EditProfileMusisi = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [showAlert, setShowAlert] = useState(false);
+  const handleCloseAlert = () => setShowAlert(false);
+  const handleShowAlert = () => setShowAlert(true);
+
   return (
     <div>
       <Layout>
@@ -220,10 +224,24 @@ const EditProfileMusisi = () => {
             onChange={onChange}
           />
           <button type='submit' className='btn btn-primary w-100 mb-1' style={{background: '#4361EE'}}>SIMPAN</button>
-          <a href={`/profile/${id}`} className='btn btn-light w-100' style={{backgroundColor: '#ECECEC', color: '#4361EE'}}>KEMBALI</a>
+          <a onClick={handleShowAlert} className='btn btn-light w-100' style={{backgroundColor: '#ECECEC', color: '#4361EE'}}>KEMBALI</a>
         </form>
 
-        <Modal show={show} onHide={handleClose} centered>
+        <Modal show={showAlert} onHide={handleCloseAlert} backdrop="static" keyboard={false} style={{width: '20%', margin: '0 40%'}} >
+          <Modal.Body className='py-5 text-center'>
+            <div className='mb-3'>
+              <Modal.Title>Data belum disimpan !</Modal.Title>
+            </div>
+            <Button onClick={handleCloseAlert} variant="primary" type="submit" className='me-2' style={{background: '#4361EE', width: '35%'}} >
+              UBAH
+            </Button>
+            <Button href={`/profile/${id}`} variant="primary" type="submit" className='ms-2' style={{background: 'none', border: '2px solid #4361EE', color: '#4361EE', width: '35%'}} >
+              BATAL
+            </Button>
+          </Modal.Body>
+        </Modal>
+
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} centered>
           <Modal.Body className='p-5'>
             <div style={{textAlign: 'center', marginTop: '0px'}}>
                 <Modal.Title style={{fontSize: '36px', fontWeight: 'bold', width: '100%'}}>Ganti Password</Modal.Title>
