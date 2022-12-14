@@ -12,6 +12,7 @@ import { createApplication, reset } from '../../features/application/Application
 import Layout from '../../components/layout/LayoutMusisi'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './responsive.css'
 
 const DetailLowongan = () => {
     const { gig } = useSelector((state) => state.gig)
@@ -99,19 +100,19 @@ const DetailLowongan = () => {
   return (
     <>
         <Layout>
-        <div className='container mx-auto' style={{width: '1080px', marginRight:'180px', marginLeft:'180px' ,marginTop: '64px', marginBottom:'64px'}}>
+        <div className='container mx-auto' style={{ marginRight:'180px', marginLeft:'180px' ,marginTop: '64px', marginBottom:'64px' }}>
             <div className='row'>
-                <div className='col'>
+                <div className='col-12 col-sm-6'>
                     <h5 className="card-title fw-bold mb-2" style={{fontSize:'40px'}}>{gig?.gig?.title}</h5>
                     <p className="card-subtitle"><FaMapMarkerAlt/>{gig?.gig?.location}</p>
                     <p className="card-subtitle mb-2"><FaDollarSign/>Rp {gig?.gig?.fee},00</p>
                 </div>
-                <a  className='col text-end'>
-                    <button className='btn btn-primary text-center mb-4' onClick={handleShow} style={{fontSize:'16px',width:'157px'}}>LAMAR</button>
+                <a  className='col-12 col-sm-6 text-end'>
+                    <button className='btn btn-primary text-center mb-4 w-100 applybtn' onClick={handleShow} style={{fontSize:'16px'}}>LAMAR</button>
                 </a>
             </div>
             <hr></hr>
-            <Swiper
+            {/* <Swiper
                 modules={[Navigation,Pagination,Scrollbar,A11y]}
                 spaceBetween={10}
                 slidesPerView={3}
@@ -121,12 +122,13 @@ const DetailLowongan = () => {
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
                 >
-                <SwiperSlide style={{backgroundColor:"#ECECEC" , width:'323px',height:'180px'}}><img style={{width:'100%',height:'100%'}} src={gig?.gig?.location_photo} alt="" /></SwiperSlide>
+                <SwiperSlide style={{backgroundColor:"#ECECEC" , width:'323px',height:'180px'}}></SwiperSlide>
                 <SwiperSlide style={{backgroundColor:"#ECECEC" , width:'323px',height:'180px'}}>Slide 2</SwiperSlide>
                 <SwiperSlide style={{backgroundColor:"#ECECEC" , width:'323px',height:'180px'}}>Slide 3</SwiperSlide>
                 <SwiperSlide style={{backgroundColor:"#ECECEC" , width:'323px',height:'180px'}}>Slide 4</SwiperSlide>
-            </Swiper>
-            <p className='mt-4'>{gig?.gig?.description}</p>
+            </Swiper> */}
+            <p className='container-fluid mt-4'>{gig?.gig?.description}</p>
+            <img className='img-fluid w-100' style={{borderRadius:'16px'}} src={gig?.gig?.location_photo} alt="" />
         </div>
 
         <Modal show={show} onHide={handleClose} centered>
