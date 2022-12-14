@@ -274,7 +274,7 @@ const Dashboard = () => {
                     </div>
                     <div className={toggleState === 2 ? "content  active-content" : "content d-none"}>
                     <h1 className='text-center fw-bold'>Daftar Pengguna Pemilik Tempat</h1>
-                    <table className="table table-bordered align-middle text-center" style={{maxWidth:"1040px"}}>
+                    <table className="table table-bordered align-middle text-center mx-auto" style={{maxWidth:"1040px"}}>
                         <thead>
                             <tr>
                             <th scope="col">No.</th>
