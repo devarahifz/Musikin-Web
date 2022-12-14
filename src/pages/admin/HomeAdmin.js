@@ -205,7 +205,7 @@ const Dashboard = () => {
   return (
     <>
         <div className='row'>
-            <div className='col pt-4' style={{borderRight:"2px solid #BABEC1", maxWidth:"320px", height:"100vh"}}>
+            <div className='col pt-4' style={{maxWidth:"320px", height:"100vh"}}>
                 <div className='container'>
                     <div className='row d-flex'>
                         <div className='col'>
@@ -235,7 +235,7 @@ const Dashboard = () => {
                     <button onClick={onLogout} className='btn btn-danger mt-5 ms-2'>Keluar</button>
                 </div>
             </div>
-            <div className='col pt-4'>
+            <div className='col pt-4' style={{borderLeft:"2px solid #BABEC1"}}>
                 <div className='container mx-auto'>
                 <div className="content-tab">
                     <div className={toggleState === 1 ? "content  active-content" : "content d-none"}>
