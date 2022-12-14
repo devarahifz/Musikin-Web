@@ -8,6 +8,7 @@ import { login, reset } from "../../features/user/AuthSlice";
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from 'react-bootstrap/Spinner';
 
 const LoginMusisi = () => {
     const [formData, setFormData] = useState({
@@ -127,7 +128,10 @@ const LoginMusisi = () => {
                         Belum punya akun <b>musisi</b>? <br/>
                         Klik <a href="/registration" style={link}>disini</a> untuk membuat akun.
                     </p>
-                    <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>MASUK</Button>
+                    <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>
+                        {status === 'loading' ? <Spinner animation="border" variant="light" /> : 'MASUK'}
+                    </Button>
+                    
                 </Form>
             </div>
         </>

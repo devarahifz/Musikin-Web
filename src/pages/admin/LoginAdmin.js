@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import logo from '../../assets/images/Musikin Logo Login.png'
 import { login, reset } from "../../features/admin/AuthSlice";
+import Spinner from 'react-bootstrap/Spinner';
 
 const LoginAdmin = () => {
 
@@ -87,7 +88,9 @@ const LoginAdmin = () => {
                     onChange={onChange} 
                     style={input} />
                 </Form.Group>
-                <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>MASUK</Button>
+                <Button type='submit' className='py-3 w-100' style={{background: '#4361EE', fontWeight: '500'}}>
+                    {status === 'loading' ? <Spinner animation="border" variant="light" /> : 'MASUK'}
+                </Button>
             </Form>
         </div>
     </>
