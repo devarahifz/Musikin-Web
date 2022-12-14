@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import logo from '../../assets/images/Musikin Logo Login.png'
-import { login, reset } from "../../features/admin/AdminSlice";
+import { login, reset } from "../../features/admin/AuthSlice";
 
 const LoginAdmin = () => {
 
@@ -16,7 +16,7 @@ const LoginAdmin = () => {
 
     const dispatch = useDispatch();
 
-    const { admin, status, error } = useSelector((state) => state.admin);
+    const { admin, status, error } = useSelector((state) => state.authAdmin);
 
     useEffect(() => {
         if (admin) {
