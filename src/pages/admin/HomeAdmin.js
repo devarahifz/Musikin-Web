@@ -252,7 +252,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {admin?.users?.rows?.map((user, index) => (
+                            {admin?.users?.map((user, index) => (
                                 <tr key={index}>
                                 <th scope="row">{index+1}</th>
                                 <td>{user.user_name}</td>
@@ -286,7 +286,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {admin?.owners?.rows?.map((owner, index) => (
+                            {admin?.owners?.map((owner, index) => (
                                 <tr key={index}>
                                 <th scope="row">{index+1}</th>
                                 <td>{owner.owner_name}</td>
