@@ -55,7 +55,7 @@ const ProfileTempat = () => {
             form.append("owner_email", formData.owner_email)
             form.append("owner_photo", formData.owner_photo)
             
-            dispatch(updateOwner({id, owner: form}))
+            await dispatch(updateOwner({id, owner: form}))
             dispatch(reset())  
             
             window.location.href = '/lowongan'
