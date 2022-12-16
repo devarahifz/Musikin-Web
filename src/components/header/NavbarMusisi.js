@@ -38,7 +38,7 @@ const NavbarMusisi = (props) => {
     return (
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid>
-            <Link to="/">
+            <Link to="/home-musisi">
                 <Navbar.Brand style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />

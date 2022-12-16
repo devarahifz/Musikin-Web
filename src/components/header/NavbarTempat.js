@@ -39,7 +39,7 @@ const NavbarTempat = (props) => {
     return (
         <Navbar style={background} collapseOnSelect expand="lg" sticky="top" >
             <Container fluid>
-            <Navbar.Brand href="/" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
+            <Navbar.Brand href="/lowongan" style={brand}><img src={logo} alt="logo" /> Musikin</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Container style={{display: 'flex', justifyContent: 'center',}}>
